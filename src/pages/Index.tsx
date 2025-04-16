@@ -8,26 +8,28 @@ import ExperienceItem from '../components/ExperienceItem';
 import ContactSection from '../components/ContactSection';
 
 const projects = [
-  { id: 1, title: "Project 1 name", image: "" },
-  { id: 2, title: "Project 2 name", image: "" },
-  { id: 3, title: "Project 3 name", image: "" },
-  { id: 4, title: "Project 4 name", image: "" },
-  { id: 5, title: "Project 5 name", image: "" },
-  { id: 6, title: "Project 6 name", image: "" },
+  { id: 1, title: "Project 1 name", image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&h=600" },
+  { id: 2, title: "Project 2 name", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&h=600" },
+  { id: 3, title: "Project 3 name", image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&h=600" },
+  { id: 4, title: "Project 4 name", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&h=600" },
+  { id: 5, title: "Project 5 name", image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&h=600" },
+  { id: 6, title: "Project 6 name", image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&h=600" },
 ];
+
+const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
 const experiences = [
   { 
     title: "DMA Partners", 
     position: "Graphic Designer", 
     period: "2022 - Current",
-    description: "As a key member of the design team, I was responsible for developing high-impact visual content for leading B2B corporations with global reach—many of them billion-dollar companies. My work spanned digital, print, and physical environments, from branding to experiential design."
+    description: loremIpsum
   },
   { 
     title: "Redforts Software", 
     position: "Design Intern", 
     period: "2021 - 2022",
-    description: "Assisted senior designers with various projects and gained hands-on experience with design systems and digital product design."
+    description: loremIpsum
   }
 ];
 
@@ -35,17 +37,20 @@ const education = [
   { 
     title: "Design Degree", 
     position: "Universidad Europea (Madrid, Spain)", 
-    period: "2019 - 2023"
+    period: "2019 - 2023",
+    description: loremIpsum
   },
   { 
     title: "New Strategies for Brands", 
     position: "CANELA®", 
-    period: "2024"
+    period: "2024",
+    description: loremIpsum
   },
   { 
     title: "Design Strategy", 
     position: "Masterbrand", 
-    period: "2023"
+    period: "2023",
+    description: loremIpsum
   }
 ];
 
@@ -57,7 +62,7 @@ const Index = () => {
       <main className="flex-grow">
         <div className="border-b border-white/10">
           <h1 className="sr-only">Selected Works</h1>
-          <div className="px-6 py-4 text-lg">Selected Works</div>
+          <div className="px-6 py-4 text-base">Selected Works</div>
           
           <div className="project-grid">
             {projects.map(project => (
@@ -71,7 +76,7 @@ const Index = () => {
         <AboutSection />
         
         <div className="py-12 px-6 border-b border-white/10">
-          <h2 className="text-xl mb-6">Experience</h2>
+          <h2 className="text-lg mb-6">Experience</h2>
           <div>
             {experiences.map((exp, index) => (
               <ExperienceItem 
@@ -86,7 +91,7 @@ const Index = () => {
         </div>
         
         <div className="py-12 px-6 border-b border-white/10">
-          <h2 className="text-xl mb-6">Education & Development Courses</h2>
+          <h2 className="text-lg mb-6">Education & Development Courses</h2>
           <div>
             {education.map((edu, index) => (
               <ExperienceItem 
@@ -94,6 +99,7 @@ const Index = () => {
                 title={edu.title}
                 position={edu.position}
                 period={edu.period}
+                description={edu.description}
               />
             ))}
           </div>

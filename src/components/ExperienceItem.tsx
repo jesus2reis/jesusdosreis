@@ -20,21 +20,22 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
   return (
     <div className="py-4 border-b border-white/10">
       <div 
-        className="flex justify-between items-center cursor-pointer"
+        className="flex flex-col sm:flex-row justify-between items-start sm:items-center cursor-pointer gap-1"
         onClick={() => setIsOpen(!isOpen)}
       >
         <div>
-          <h3 className="text-lg">{title} <span className="text-muted-foreground">— {position}</span></h3>
+          <h3 className="text-base">{title}</h3>
+          <p className="text-sm text-muted-foreground">{position}</p>
         </div>
         <div className="flex items-center gap-4">
-          <span>{period}</span>
+          <span className="text-sm">{period}</span>
           <span>{isOpen ? <Minus size={16} /> : <Plus size={16} />}</span>
         </div>
       </div>
       
-      {isOpen && description && (
-        <div className="pt-4 text-sm text-muted-foreground">
-          <p>{description}</p>
+      {isOpen && (
+        <div className="pt-4 text-sm text-muted-foreground md:w-1/2">
+          <p>{description || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie."}</p>
         </div>
       )}
     </div>

@@ -18,14 +18,14 @@ const Footer: React.FC<FooterProps> = ({
   return (
     <footer className="w-full py-4 px-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
       <div className="flex items-center gap-2">
-        <span className="text-sm">© {year} {name}</span>
+        <span className="text-xs">© {year} {name}</span>
       </div>
       
-      <div className="text-sm">{title}</div>
+      <div className="text-xs">{title}</div>
       
       <a 
         href={`mailto:${email}`} 
-        className="text-sm hover:underline"
+        className="text-xs hover:underline"
       >
         {email}
       </a>
