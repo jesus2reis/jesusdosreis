@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import ProjectCard from '../components/ProjectCard';
@@ -8,10 +8,10 @@ import ExperienceItem from '../components/ExperienceItem';
 import ContactSection from '../components/ContactSection';
 
 const projects = [
-  { id: 1, title: "Project 1 name", image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&h=600" },
-  { id: 2, title: "Project 2 name", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&h=600" },
-  { id: 3, title: "Project 3 name", image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&h=600" },
-  { id: 4, title: "Project 4 name", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&h=600" },
+  { id: 1, title: "Project 1 name", vimeoId: "1076079333" },
+  { id: 2, title: "Project 2 name", vimeoId: "970924186" },
+  { id: 3, title: "Project 3 name", vimeoId: "970863996" },
+  { id: 4, title: "Project 4 name", vimeoId: "961719754" },
   { id: 5, title: "Project 5 name", image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&h=600" },
   { id: 6, title: "Project 6 name", image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&h=600" },
 ];
@@ -55,6 +55,28 @@ const education = [
 ];
 
 const Index = () => {
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    // Simulate preloading time
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white">
+        <div className="flex flex-col items-center space-y-4">
+          <h1 className="text-2xl font-light animate-pulse">DESIGNER NAME</h1>
+          <p className="text-sm text-center animate-pulse">Brand Designer</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-black text-white animate-fade-in">
       <Navigation />
@@ -62,7 +84,7 @@ const Index = () => {
       <main className="flex-grow">
         <div className="border-b border-white/10">
           <h1 className="sr-only">Selected Works</h1>
-          <div className="px-6 py-4 text-sm">Selected Works</div>
+          <div className="px-6 py-4 text-xs">Selected Works</div>
           
           <div className="project-grid">
             {projects.map(project => (
@@ -76,7 +98,7 @@ const Index = () => {
         <AboutSection />
         
         <div className="py-12 px-6 border-b border-white/10">
-          <h2 className="text-sm mb-6">Experience</h2>
+          <h2 className="text-xs mb-6">Experience</h2>
           <div>
             {experiences.map((exp, index) => (
               <ExperienceItem 
@@ -91,7 +113,7 @@ const Index = () => {
         </div>
         
         <div className="py-12 px-6 border-b border-white/10">
-          <h2 className="text-sm mb-6">Education & Development Courses</h2>
+          <h2 className="text-xs mb-6">Education & Development Courses</h2>
           <div>
             {education.map((edu, index) => (
               <ExperienceItem 

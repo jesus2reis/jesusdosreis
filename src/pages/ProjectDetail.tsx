@@ -1,10 +1,8 @@
-
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { ArrowLeft } from 'lucide-react';
-import { AspectRatio } from '../components/ui/aspect-ratio';
 
 const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
 
@@ -36,7 +34,6 @@ const projects = [
       "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&h=800"
     ]
   },
-  // Add more project details for other IDs
   { 
     id: 3, 
     title: "Project 3 name", 
@@ -142,15 +139,13 @@ const ProjectDetail = () => {
         </div>
         
         {project.images.map((image, index) => (
-          <div key={index} className="border-t border-white/10 h-[60vh] flex items-center justify-center relative overflow-hidden">
+          <div key={index} className="border-t border-white/10 flex items-center justify-center relative overflow-hidden">
             <div className="w-full h-full">
-              <AspectRatio ratio={4/3} className="mx-auto max-w-5xl">
-                <img 
-                  src={image} 
-                  alt={`Project image ${index + 1}`} 
-                  className="w-full h-full object-cover"
-                />
-              </AspectRatio>
+              <img 
+                src={image} 
+                alt={`Project image ${index + 1}`} 
+                className="w-full h-auto object-cover"
+              />
             </div>
           </div>
         ))}
