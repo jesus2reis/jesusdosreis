@@ -40,22 +40,35 @@ const Navigation: React.FC<NavigationProps> = ({
   return (
     <nav className="w-full py-4 px-6 flex justify-between items-center border-b border-white/10">
       <div className="flex items-center space-x-1">
-        <Link to="/" className="text-xl font-mono">
+        <Link to="/" className="text-xl font-mono animate-spin-slow hover:animate-spin">
           {title}
         </Link>
       </div>
       
       <div className="text-center">
         <div className="text-base font-light">{title === "JdR" ? "Jesús dos Reis" : title}</div>
-        <div className="text-xs text-muted-foreground">{subtitle}</div>
+        <div className="text-xs text-muted-foreground text-center">{subtitle}</div>
       </div>
       
-      <button ref={buttonRef} onClick={toggleMenu} className="p-1">
+      {/* Desktop menu */}
+      <div className="hidden md:flex space-x-8">
+        <Link to="/" className="text-sm hover:underline">Home</Link>
+        <Link to="/about" className="text-sm hover:underline">About</Link>
+        <Link to="/contact" className="text-sm hover:underline">Contact</Link>
+      </div>
+      
+      {/* Mobile menu button */}
+      <button ref={buttonRef} onClick={toggleMenu} className="p-1 md:hidden">
         {isMenuOpen ? <X size={20} /> : <Plus size={20} />}
       </button>
       
+      {/* Mobile menu overlay */}
       {isMenuOpen && (
-        <div ref={menuRef} className="fixed inset-0 bg-black z-50 p-6 flex flex-col items-center justify-center animate-fade-in">
+        <div 
+          ref={menuRef} 
+          className="fixed inset-0 bg-black z-50 p-6 flex flex-col items-center justify-center animate-fade-in md:hidden"
+          onClick={toggleMenu}
+        >
           <button onClick={toggleMenu} className="absolute top-4 right-6">
             <X size={20} />
           </button>

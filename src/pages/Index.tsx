@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import ProjectCard from '../components/ProjectCard';
@@ -55,30 +56,8 @@ const education = [
 ];
 
 const Index = () => {
-  const [loading, setLoading] = useState(true);
-  
-  useEffect(() => {
-    // Simulate preloading time
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-    
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white">
-        <div className="flex flex-col items-center space-y-4">
-          <h1 className="text-2xl font-light animate-pulse">DESIGNER NAME</h1>
-          <p className="text-sm text-center animate-pulse">Brand Designer</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white animate-fade-in">
+    <div className="min-h-screen flex flex-col bg-black text-white">
       <Navigation />
       
       <main className="flex-grow">
@@ -93,13 +72,22 @@ const Index = () => {
               </div>
             ))}
           </div>
+          
+          <div className="flex justify-center py-8">
+            <Link 
+              to="/projects" 
+              className="px-6 py-3 border border-white/20 hover:bg-white/5 transition-colors text-sm"
+            >
+              See more projects
+            </Link>
+          </div>
         </div>
         
         <AboutSection />
         
         <div className="py-12 px-6 border-b border-white/10">
           <h2 className="text-xs mb-6">Experience</h2>
-          <div>
+          <div className="md:grid md:grid-cols-2">
             {experiences.map((exp, index) => (
               <ExperienceItem 
                 key={index}
@@ -114,7 +102,7 @@ const Index = () => {
         
         <div className="py-12 px-6 border-b border-white/10">
           <h2 className="text-xs mb-6">Education & Development Courses</h2>
-          <div>
+          <div className="md:grid md:grid-cols-2">
             {education.map((edu, index) => (
               <ExperienceItem 
                 key={index}
