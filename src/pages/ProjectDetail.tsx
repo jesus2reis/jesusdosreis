@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { ArrowLeft } from 'lucide-react';
+import { AspectRatio } from '../components/ui/aspect-ratio';
 
 const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
 
@@ -106,46 +107,51 @@ const ProjectDetail = () => {
             <span>Back</span>
           </Link>
           
-          <h1 className="text-2xl font-light mb-12">{project.title}</h1>
+          <h1 className="text-base font-light mb-12">{project.title}</h1>
           
           <div className="details-grid mb-12">
-            <div className="border-t border-white/10 pt-4">
-              <div className="text-xs text-muted-foreground mb-1">Client</div>
-              <div className="text-sm">{project.client}</div>
+            <div className="space-y-6">
+              <div className="border-t border-white/10 pt-4">
+                <div className="text-xs text-muted-foreground mb-1">Client</div>
+                <div className="text-sm">{project.client}</div>
+              </div>
+              
+              <div className="border-t border-white/10 pt-4">
+                <div className="text-xs text-muted-foreground mb-1">Role</div>
+                <div className="text-sm">{project.role}</div>
+              </div>
+              
+              <div className="border-t border-white/10 pt-4">
+                <div className="text-xs text-muted-foreground mb-1">Year</div>
+                <div className="text-sm">{project.year}</div>
+              </div>
             </div>
-            <div className="border-t border-white/10 pt-4"> </div>
             
-            <div className="border-t border-white/10 pt-4">
-              <div className="text-xs text-muted-foreground mb-1">Role</div>
-              <div className="text-sm">{project.role}</div>
+            <div className="space-y-12 border-t border-white/10 pt-4 md:ml-8">
+              <div className="mb-8">
+                <h2 className="text-sm mb-4">Challenge</h2>
+                <p className="text-base font-light">{project.challenge}</p>
+              </div>
+              
+              <div>
+                <h2 className="text-sm mb-4">Solution</h2>
+                <p className="text-base font-light">{project.solution}</p>
+              </div>
             </div>
-            <div className="border-t border-white/10 pt-4"> </div>
-            
-            <div className="border-t border-white/10 pt-4">
-              <div className="text-xs text-muted-foreground mb-1">Year</div>
-              <div className="text-sm">{project.year}</div>
-            </div>
-            <div className="border-t border-white/10 pt-4"> </div>
-          </div>
-          
-          <div className="mb-16">
-            <h2 className="text-lg mb-4">Challenge</h2>
-            <p className="text-base font-light">{project.challenge}</p>
-          </div>
-          
-          <div className="mb-16">
-            <h2 className="text-lg mb-4">Solution</h2>
-            <p className="text-base font-light">{project.solution}</p>
           </div>
         </div>
         
         {project.images.map((image, index) => (
           <div key={index} className="border-t border-white/10 h-[60vh] flex items-center justify-center relative overflow-hidden">
-            <img 
-              src={image} 
-              alt={`Project image ${index + 1}`} 
-              className="w-full h-full object-cover"
-            />
+            <div className="w-full h-full">
+              <AspectRatio ratio={4/3} className="mx-auto max-w-5xl">
+                <img 
+                  src={image} 
+                  alt={`Project image ${index + 1}`} 
+                  className="w-full h-full object-cover"
+                />
+              </AspectRatio>
+            </div>
           </div>
         ))}
       </main>

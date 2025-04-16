@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -90,7 +90,7 @@ html, body, #root {
 
 .details-grid {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 4fr 8fr;
   gap: 0;
 }
 

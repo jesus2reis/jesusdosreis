@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Plus, X } from 'lucide-react';
 
@@ -13,10 +13,29 @@ const Navigation: React.FC<NavigationProps> = ({
   subtitle = "Brand Designer" 
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isMenuOpen && 
+          menuRef.current && 
+          !menuRef.current.contains(event.target as Node) &&
+          buttonRef.current && 
+          !buttonRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
   
   return (
     <nav className="w-full py-4 px-6 flex justify-between items-center border-b border-white/10">
@@ -26,17 +45,17 @@ const Navigation: React.FC<NavigationProps> = ({
         </Link>
       </div>
       
-      <div className="text-right">
+      <div className="text-center">
         <div className="text-base font-light">{title === "JdR" ? "Jesús dos Reis" : title}</div>
         <div className="text-xs text-muted-foreground">{subtitle}</div>
       </div>
       
-      <button onClick={toggleMenu} className="p-1">
+      <button ref={buttonRef} onClick={toggleMenu} className="p-1">
         {isMenuOpen ? <X size={20} /> : <Plus size={20} />}
       </button>
       
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-black z-50 p-6 flex flex-col items-center justify-center animate-fade-in">
+        <div ref={menuRef} className="fixed inset-0 bg-black z-50 p-6 flex flex-col items-center justify-center animate-fade-in">
           <button onClick={toggleMenu} className="absolute top-4 right-6">
             <X size={20} />
           </button>

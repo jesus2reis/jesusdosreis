@@ -62,7 +62,7 @@ const Index = () => {
       <main className="flex-grow">
         <div className="border-b border-white/10">
           <h1 className="sr-only">Selected Works</h1>
-          <div className="px-6 py-4 text-base">Selected Works</div>
+          <div className="px-6 py-4 text-sm">Selected Works</div>
           
           <div className="project-grid">
             {projects.map(project => (
@@ -76,7 +76,7 @@ const Index = () => {
         <AboutSection />
         
         <div className="py-12 px-6 border-b border-white/10">
-          <h2 className="text-lg mb-6">Experience</h2>
+          <h2 className="text-sm mb-6">Experience</h2>
           <div>
             {experiences.map((exp, index) => (
               <ExperienceItem 
@@ -91,7 +91,7 @@ const Index = () => {
         </div>
         
         <div className="py-12 px-6 border-b border-white/10">
-          <h2 className="text-lg mb-6">Education & Development Courses</h2>
+          <h2 className="text-sm mb-6">Education & Development Courses</h2>
           <div>
             {education.map((edu, index) => (
               <ExperienceItem 

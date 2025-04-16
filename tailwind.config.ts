@@ -55,7 +55,7 @@ export default {
 				},
 			},
 			fontFamily: {
-				sans: ['Inter', 'sans-serif'],
+				sans: ['Geist', 'sans-serif'],
 				mono: ['Space Mono', 'monospace'],
 			},
 			borderRadius: {
