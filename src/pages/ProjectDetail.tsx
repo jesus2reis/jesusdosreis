@@ -1,8 +1,10 @@
+
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { ArrowLeft } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
 
@@ -94,7 +96,7 @@ const ProjectDetail = () => {
   const project = projects.find(p => p.id === projectId) || projects[0];
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white animate-fade-in">
+    <div className="min-h-screen flex flex-col bg-background text-foreground animate-fade-in">
       <Navigation title={project.title} subtitle="" />
       
       <main className="flex-grow">
@@ -108,23 +110,23 @@ const ProjectDetail = () => {
           
           <div className="details-grid mb-12">
             <div className="space-y-6">
-              <div className="border-t border-white/10 pt-4">
+              <div className="border-t border-white/10 dark:border-white/10 border-black/10 pt-4">
                 <div className="text-xs text-muted-foreground mb-1">Client</div>
                 <div className="text-sm">{project.client}</div>
               </div>
               
-              <div className="border-t border-white/10 pt-4">
+              <div className="border-t border-white/10 dark:border-white/10 border-black/10 pt-4">
                 <div className="text-xs text-muted-foreground mb-1">Role</div>
                 <div className="text-sm">{project.role}</div>
               </div>
               
-              <div className="border-t border-white/10 pt-4">
+              <div className="border-t border-white/10 dark:border-white/10 border-black/10 pt-4">
                 <div className="text-xs text-muted-foreground mb-1">Year</div>
                 <div className="text-sm">{project.year}</div>
               </div>
             </div>
             
-            <div className="space-y-12 border-t border-white/10 pt-4 md:ml-8">
+            <div className="space-y-12 border-t border-white/10 dark:border-white/10 border-black/10 pt-4 md:ml-8">
               <div className="mb-8">
                 <h2 className="text-sm mb-4">Challenge</h2>
                 <p className="text-base font-light">{project.challenge}</p>
@@ -139,16 +141,25 @@ const ProjectDetail = () => {
         </div>
         
         {project.images.map((image, index) => (
-          <div key={index} className="border-t border-white/10 flex items-center justify-center relative overflow-hidden">
-            <div className="w-full h-full">
+          <div key={index} className="border-t border-white/10 dark:border-white/10 border-black/10 flex items-center justify-center relative overflow-hidden w-full">
+            <div className="w-full">
               <img 
                 src={image} 
                 alt={`Project image ${index + 1}`} 
-                className="w-full h-auto object-cover"
+                className="w-full h-auto"
               />
             </div>
           </div>
         ))}
+        
+        <div className="border-t border-white/10 dark:border-white/10 border-black/10 p-6 flex justify-center">
+          <Link to="/">
+            <Button variant="outline" className="flex items-center gap-2">
+              <ArrowLeft size={16} />
+              Back to see more projects
+            </Button>
+          </Link>
+        </div>
       </main>
       
       <Footer />

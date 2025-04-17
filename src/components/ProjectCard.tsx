@@ -53,7 +53,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                   src={`https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
                   allow="autoplay; fullscreen; picture-in-picture"
                   className="w-full h-full absolute top-0 left-0"
-                  style={{ opacity: isVideoLoaded ? 1 : 0 }}
+                  style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    position: 'absolute',
+                    top: '0',
+                    left: '0',
+                    objectFit: 'cover',
+                    opacity: isVideoLoaded ? 1 : 0 
+                  }}
                   title={title}
                 ></iframe>
               </div>
