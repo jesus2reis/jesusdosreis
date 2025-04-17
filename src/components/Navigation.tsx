@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { Plus, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, Moon, Sun } from 'lucide-react';
+import { useTheme } from '@/hooks/useTheme';
 
 interface NavigationProps {
   title?: string;
@@ -15,6 +16,8 @@ const Navigation: React.FC<NavigationProps> = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
   
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -46,16 +49,43 @@ const Navigation: React.FC<NavigationProps> = ({
       </div>
       
       <div className="text-center">
-        <div className="text-base font-light">{title === "JdR" ? "Jesús dos Reis" : title}</div>
-        <div className="text-xs text-muted-foreground">{subtitle}</div>
+        <Link to="/" className="group">
+          <div className="text-base font-light transition-transform duration-300 group-hover:scale-105">
+            {title === "JdR" ? "Jesús dos Reis" : title}
+          </div>
+          <div className="text-xs text-muted-foreground">{subtitle}</div>
+        </Link>
       </div>
       
-      <button ref={buttonRef} onClick={toggleMenu} className="p-1">
-        {isMenuOpen ? <X size={20} /> : <Plus size={20} />}
-      </button>
+      {/* Desktop Navigation */}
+      <div className="hidden md:flex items-center space-x-6">
+        <Link to="/" className={`hover:underline ${location.pathname === '/' ? 'text-white' : 'text-muted-foreground'}`}>
+          Home
+        </Link>
+        <Link to="/about" className={`hover:underline ${location.pathname === '/about' ? 'text-white' : 'text-muted-foreground'}`}>
+          About
+        </Link>
+        <Link to="/contact" className={`hover:underline ${location.pathname === '/contact' ? 'text-white' : 'text-muted-foreground'}`}>
+          Contact
+        </Link>
+        <button onClick={toggleTheme} className="p-1 rounded-full hover:bg-muted/50 transition-colors">
+          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
+      </div>
       
+      {/* Mobile Navigation Button */}
+      <div className="md:hidden flex items-center space-x-2">
+        <button onClick={toggleTheme} className="p-1 mr-2 rounded-full hover:bg-muted/50 transition-colors">
+          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
+        <button ref={buttonRef} onClick={toggleMenu} className="p-1">
+          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+      
+      {/* Mobile Menu */}
       {isMenuOpen && (
-        <div ref={menuRef} className="fixed inset-0 bg-black z-50 p-6 flex flex-col items-center justify-center animate-fade-in">
+        <div ref={menuRef} className="fixed inset-0 bg-black z-50 p-6 flex flex-col items-center justify-center animate-fade-in md:hidden">
           <button onClick={toggleMenu} className="absolute top-4 right-6">
             <X size={20} />
           </button>

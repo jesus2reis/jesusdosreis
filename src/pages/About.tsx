@@ -2,22 +2,9 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import ProjectCard from '../components/ProjectCard';
 import AboutSection from '../components/AboutSection';
 import ExperienceItem from '../components/ExperienceItem';
 import ContactSection from '../components/ContactSection';
-import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
-
-const projects = [
-  { id: 1, title: "Project 1 name", vimeoId: "1076079333" },
-  { id: 2, title: "Project 2 name", vimeoId: "970924186" },
-  { id: 3, title: "Project 3 name", vimeoId: "970863996" },
-  { id: 4, title: "Project 4 name", vimeoId: "961719754" },
-  { id: 5, title: "Project 5 name", image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&h=600" },
-  { id: 6, title: "Project 6 name", image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&h=600" },
-];
 
 const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
@@ -57,35 +44,26 @@ const education = [
   }
 ];
 
-const Index = () => {
+const About = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       <Navigation />
       
       <main className="flex-grow">
-        <div className="border-b border-border">
-          <h1 className="sr-only">Selected Works</h1>
-          <div className="px-6 py-4 text-xs">Selected Works</div>
-          
-          <div className="project-grid">
-            {projects.map(project => (
-              <div key={project.id}>
-                <ProjectCard {...project} />
-              </div>
-            ))}
-          </div>
-          
-          <div className="p-6 flex justify-center">
-            <Link to="/">
-              <Button variant="outline" className="group">
-                <ArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-                See more projects
-              </Button>
-            </Link>
+        <div className="py-16 px-6 border-b border-border">
+          <h1 className="text-3xl font-light mb-8">About Me</h1>
+          <div className="max-w-3xl">
+            <p className="text-lg md:text-[18px] font-light mb-6">
+              I'm a brand designer based in Madrid, born in Venezuela, with Portuguese heritage. I currently work at a creative agency, and occasionally take on freelance projects that spark creative interest and strategic challenge.
+            </p>
+            <p className="text-lg md:text-[18px] font-light mb-6">
+              My work centers on building meaningful brand identities by combining strategy, design systems, and visual storytelling. I'm especially passionate about concept-driven design that's clear, consistent, and emotionally engaging.
+            </p>
+            <p className="text-lg md:text-[18px] font-light">
+              [Content to be added later]
+            </p>
           </div>
         </div>
-        
-        <AboutSection />
         
         <div className="py-12 px-6 border-b border-border">
           <h2 className="text-xs mb-6">Experience</h2>
@@ -125,4 +103,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default About;
