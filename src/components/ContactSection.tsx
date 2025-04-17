@@ -13,20 +13,23 @@ const ContactSection: React.FC<ContactSectionProps> = ({
   linkedin = "LinkedIn"
 }) => {
   return (
-    <div className="px-6 border-b border-white/10 dark:border-white/10 border-black/10 py-[25px]">
-      <h2 className="mb-6 text-sm">{title}</h2>
+    <div className="py-12 px-6 border-b border-white/10">
+      <h2 className="text-lg mb-6">{title}</h2>
       <div className="space-y-4">
         <div>
-          <a href={`mailto:${email}`} className="text-xl hover:underline">
+          <a 
+            href={`mailto:${email}`}
+            className="text-base hover:underline"
+          >
             {email}
           </a>
         </div>
-        <div className="my-px">
+        <div>
           <a 
             href="https://linkedin.com/in/username" 
             target="_blank" 
-            rel="noopener noreferrer" 
-            className="text-xl hover:underline"
+            rel="noopener noreferrer"
+            className="text-base hover:underline"
           >
             {linkedin}
           </a>
