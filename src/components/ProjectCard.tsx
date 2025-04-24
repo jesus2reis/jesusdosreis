@@ -21,7 +21,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   
-  // Use Unsplash placeholder images if no image or vimeoId
   const placeholderImage = image || `https://source.unsplash.com/collection/4320577/${id}`;
   
   useEffect(() => {
@@ -44,21 +43,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       className={`project-card block w-full h-full relative overflow-hidden group ${className}`}
     >
       <AspectRatio ratio={4/3} className="w-full h-full">
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
           {vimeoId ? (
             <>
-              <div className={`w-full h-full ${!isVideoLoaded ? 'animate-pulse bg-muted' : ''}`}>
+              <div className={`absolute inset-0 ${!isVideoLoaded ? 'animate-pulse bg-muted' : ''}`}>
                 <iframe
                   ref={iframeRef}
                   src={`https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
                   allow="autoplay; fullscreen; picture-in-picture"
-                  className="w-full h-full absolute top-0 left-0 object-cover"
-                  style={{ 
-                    opacity: isVideoLoaded ? 1 : 0,
-                    width: '100%',
-                    height: '100%',
-                    position: 'absolute'
-                  }}
+                  className="w-[150%] h-[150%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover"
                   title={title}
                 ></iframe>
               </div>
@@ -66,7 +59,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 <img 
                   src={placeholderImage} 
                   alt={title} 
-                  className="w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
               )}
             </>
@@ -90,3 +83,4 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 };
 
 export default ProjectCard;
+
