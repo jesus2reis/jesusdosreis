@@ -1,7 +1,7 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Moon, Sun } from 'lucide-react';
-import { useTheme } from '@/hooks/useTheme';
+import { Menu, X } from 'lucide-react';
 
 interface NavigationProps {
   title?: string;
@@ -16,7 +16,6 @@ const Navigation: React.FC<NavigationProps> = ({
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
-  const { theme, toggleTheme } = useTheme();
   
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -61,16 +60,10 @@ const Navigation: React.FC<NavigationProps> = ({
         <Link to="/contact" className={`hover:underline ${location.pathname === '/contact' ? 'text-white' : 'text-muted-foreground'}`}>
           Contact
         </Link>
-        <button onClick={toggleTheme} className="p-1 rounded-full hover:bg-muted/50 transition-colors">
-          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
       </div>
       
       {/* Mobile Navigation Button */}
       <div className="md:hidden flex items-center space-x-2">
-        <button onClick={toggleTheme} className="p-1 mr-2 rounded-full hover:bg-muted/50 transition-colors">
-          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
         <button ref={buttonRef} onClick={toggleMenu} className="p-1">
           {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>

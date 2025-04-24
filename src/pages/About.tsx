@@ -67,7 +67,7 @@ const About = () => {
         
         <div className="py-12 px-6 border-b border-border">
           <h2 className="text-xs mb-6">Experience</h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-1 gap-8">
             {experiences.map((exp, index) => (
               <ExperienceItem 
                 key={index}
@@ -82,7 +82,7 @@ const About = () => {
         
         <div className="py-12 px-6 border-b border-border">
           <h2 className="text-xs mb-6">Education & Development Courses</h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-1 gap-8">
             {education.map((edu, index) => (
               <ExperienceItem 
                 key={index}

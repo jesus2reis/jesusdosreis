@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -6,9 +5,6 @@ import ProjectCard from '../components/ProjectCard';
 import AboutSection from '../components/AboutSection';
 import ExperienceItem from '../components/ExperienceItem';
 import ContactSection from '../components/ContactSection';
-import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const projects = [
   { id: 1, title: "Project 1 name", vimeoId: "1076079333" },
@@ -73,15 +69,6 @@ const Index = () => {
                 <ProjectCard {...project} />
               </div>
             ))}
-          </div>
-          
-          <div className="p-6 flex justify-center">
-            <Link to="/">
-              <Button variant="outline" className="group">
-                <ArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-                See more projects
-              </Button>
-            </Link>
           </div>
         </div>
         
