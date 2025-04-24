@@ -24,8 +24,8 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
         onClick={() => setIsOpen(!isOpen)}
       >
         <div>
-          <h3 className="text-base">{title}</h3>
-          <p className="text-sm text-muted-foreground">{position}</p>
+          <h3 className="text-base transition-all duration-300 hover:translate-x-2">{title}</h3>
+          <p className="text-sm text-muted-foreground transition-all duration-300 hover:translate-x-2">{position}</p>
         </div>
         <div className="flex items-center gap-4">
           <span className="text-sm">{period}</span>
@@ -34,7 +34,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
       </div>
       
       {isOpen && (
-        <div className="pt-4 text-sm text-muted-foreground md:w-1/2">
+        <div className="pt-4 text-sm text-muted-foreground">
           <p>{description || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie."}</p>
         </div>
       )}

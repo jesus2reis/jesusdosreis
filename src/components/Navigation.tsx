@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Moon, Sun } from 'lucide-react';
@@ -10,7 +9,7 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = ({ 
-  title = "JdR", 
+  title = "Jesús dos Reis", 
   subtitle = "Brand Designer" 
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,16 +41,10 @@ const Navigation: React.FC<NavigationProps> = ({
   
   return (
     <nav className="w-full py-4 px-6 flex justify-between items-center border-b border-white/10">
-      <div className="flex items-center space-x-1">
-        <Link to="/" className="text-xl font-mono">
-          {title}
-        </Link>
-      </div>
-      
-      <div className="text-center">
+      <div className="flex flex-col">
         <Link to="/" className="group">
           <div className="text-base font-light transition-transform duration-300 group-hover:scale-105">
-            {title === "JdR" ? "Jesús dos Reis" : title}
+            {title}
           </div>
           <div className="text-xs text-muted-foreground">{subtitle}</div>
         </Link>
