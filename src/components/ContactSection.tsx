@@ -9,7 +9,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
   email = "hola@jesusdosreis.com",
   linkedin = "LinkedIn"
 }) => {
-  return <div className="py-12 px-6 border-b border-white/10">
+  return <div className="py-12 px-6 border-b border-white/10 ">
       <h2 className="mb-6 text-sm">{title}</h2>
       <div className="space-y-4">
         <div>
