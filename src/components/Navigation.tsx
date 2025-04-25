@@ -30,7 +30,7 @@ const Navigation: React.FC<NavigationProps> = ({
   return <nav className="w-full py-4 px-6 flex justify-between items-center border-b border-white/10">
       <div className="flex flex-col">
         <Link to="/" className="group">
-          <div className="text-base font-light transition-transform duration-300 group-hover:font-medium">
+          <div className="text-base font-light ">
             {title}
           </div>
           <div className="text-xs text-muted-foreground">{subtitle}</div>
