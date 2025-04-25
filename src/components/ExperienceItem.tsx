@@ -17,7 +17,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center cursor-pointer gap-1" onClick={() => setIsOpen(!isOpen)}>
         <div>
           <h3 className="font-light hover:font-medium text-lg">{title}</h3>
-          <p className="text-sm text-muted-foreground transition-all duration-300">{position}</p>
+          <p className="text-sm text-muted-foreground">{position}</p>
         </div>
         <div className="flex items-center gap-4">
           <span className="text-sm">{period}</span>
