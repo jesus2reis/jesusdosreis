@@ -1,32 +1,73 @@
-
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { ArrowLeft } from 'lucide-react';
-import { useProject, useProjectImages } from '../hooks/useProjects';
-
+const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
+const projects = [{
+  id: 1,
+  title: "Project 1 name",
+  client: "Positif",
+  role: "Art Direction, Graphic Design",
+  year: "2017",
+  challenge: loremIpsum,
+  solution: loremIpsum,
+  images: ["https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1200&h=800", "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&h=800", "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&h=800"]
+}, {
+  id: 2,
+  title: "Project 2 name",
+  client: "Bluedot",
+  role: "Brand Strategy, Visual Identity",
+  year: "2019",
+  challenge: loremIpsum,
+  solution: loremIpsum,
+  images: ["https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&h=800", "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&h=800"]
+}, {
+  id: 3,
+  title: "Project 3 name",
+  client: "Artemis",
+  role: "UX/UI Design",
+  year: "2020",
+  challenge: loremIpsum,
+  solution: loremIpsum,
+  images: ["https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1200&h=800", "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&h=800"]
+}, {
+  id: 4,
+  title: "Project 4 name",
+  client: "Nova",
+  role: "Branding, Print Design",
+  year: "2021",
+  challenge: loremIpsum,
+  solution: loremIpsum,
+  images: ["https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&h=800", "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&h=800"]
+}, {
+  id: 5,
+  title: "Project 5 name",
+  client: "Zenith",
+  role: "Art Direction",
+  year: "2022",
+  challenge: loremIpsum,
+  solution: loremIpsum,
+  images: ["https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&h=800", "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1200&h=800"]
+}, {
+  id: 6,
+  title: "Project 6 name",
+  client: "Momentum",
+  role: "UI Design, Web Development",
+  year: "2023",
+  challenge: loremIpsum,
+  solution: loremIpsum,
+  images: ["https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&h=800", "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&h=800"]
+}];
 const ProjectDetail = () => {
-  const { id } = useParams<{ id: string }>();
+  const {
+    id
+  } = useParams<{
+    id: string;
+  }>();
   const projectId = parseInt(id || "1");
-  
-  const { data: project, isLoading: isLoadingProject } = useProject(projectId);
-  const { data: images, isLoading: isLoadingImages } = useProjectImages(projectId);
-
-  if (isLoadingProject || isLoadingImages) {
-    return <div className="min-h-screen flex items-center justify-center bg-black text-white">
-      Loading...
-    </div>;
-  }
-
-  if (!project) {
-    return <div className="min-h-screen flex items-center justify-center bg-black text-white">
-      Project not found
-    </div>;
-  }
-
-  return (
-    <div className="min-h-screen flex flex-col bg-black text-white animate-fade-in">
+  const project = projects.find(p => p.id === projectId) || projects[0];
+  return <div className="min-h-screen flex flex-col bg-black text-white animate-fade-in">
       <Navigation title={project.title} subtitle="" />
       
       <main className="flex-grow">
@@ -70,18 +111,14 @@ const ProjectDetail = () => {
           </div>
         </div>
         
-        {images?.map((image, index) => (
-          <div key={index} className="border-t border-white/10 flex items-center justify-center relative overflow-hidden">
+        {project.images.map((image, index) => <div key={index} className="border-t border-white/10 flex items-center justify-center relative overflow-hidden">
             <div className="w-full h-full">
-              <img src={image.image_url} alt={`Project image ${index + 1}`} className="w-full h-auto object-cover" />
+              <img src={image} alt={`Project image ${index + 1}`} className="w-full h-auto object-cover" />
             </div>
-          </div>
-        ))}
+          </div>)}
       </main>
       
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default ProjectDetail;
