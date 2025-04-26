@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AspectRatio } from './ui/aspect-ratio';
 
 interface ProjectCardProps {
-  id: number;
+  id: string;  // Changed from number to string to match Supabase UUID
   title: string;
   image?: string;
   vimeoId?: string;
@@ -83,4 +83,3 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 };
 
 export default ProjectCard;
-
