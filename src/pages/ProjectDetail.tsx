@@ -21,7 +21,7 @@ const ProjectDetail = () => {
   const { project, images } = data;
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white animate-fade-in">
+    <div className="min-h-screen flex flex-col bg-background text-foreground animate-fade-in">
       <Navigation title={project.title} subtitle="" />
       
       <main className="flex-grow">
@@ -36,28 +36,28 @@ const ProjectDetail = () => {
           <div className="details-grid mb-12">
             <div className="space-y-6">
               {project.client && (
-                <div className="border-t border-white/10 pt-4">
+                <div className="border-t border-border pt-4">
                   <div className="text-xs text-muted-foreground mb-1">Client</div>
                   <div className="text-sm">{project.client}</div>
                 </div>
               )}
               
               {project.role && (
-                <div className="border-t border-white/10 pt-4">
+                <div className="border-t border-border pt-4">
                   <div className="text-xs text-muted-foreground mb-1">Role</div>
                   <div className="text-sm">{project.role}</div>
                 </div>
               )}
               
               {project.year && (
-                <div className="border-t border-white/10 pt-4">
+                <div className="border-t border-border pt-4">
                   <div className="text-xs text-muted-foreground mb-1">Year</div>
                   <div className="text-sm">{project.year}</div>
                 </div>
               )}
             </div>
             
-            <div className="space-y-12 border-t border-white/10 pt-4 md:ml-8">
+            <div className="space-y-12 border-t border-border pt-4 md:ml-8">
               {project.challenge && (
                 <div className="mb-8">
                   <h2 className="text-sm mb-4">Challenge</h2>
@@ -76,7 +76,7 @@ const ProjectDetail = () => {
         </div>
         
         {project.vimeo_id && (
-          <div className="border-t border-white/10 flex items-center justify-center relative overflow-hidden">
+          <div className="border-t border-border flex items-center justify-center relative overflow-hidden">
             <div className="w-full h-full">
               <iframe
                 src={`https://player.vimeo.com/video/${project.vimeo_id}?background=1&autoplay=1&loop=1&byline=0&title=0`}
@@ -89,7 +89,7 @@ const ProjectDetail = () => {
         )}
 
         {images?.map((image, index) => (
-          <div key={index} className="border-t border-white/10 flex items-center justify-center relative overflow-hidden">
+          <div key={index} className="border-t border-border flex items-center justify-center relative overflow-hidden">
             <div className="w-full h-full">
               <img src={image.url} alt={`Project image ${index + 1}`} className="w-full h-auto object-cover" />
             </div>

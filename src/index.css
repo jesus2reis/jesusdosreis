@@ -7,26 +7,26 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    --background: 45 20% 97%;  /* Cream background #fdf8f3 */
+    --foreground: 0 0% 15%;    /* Dark grey text */
 
-    --card: 0 0% 97%;
-    --card-foreground: 0 0% 0%;
+    --card: 45 20% 95%;
+    --card-foreground: 0 0% 15%;
 
-    --popover: 0 0% 97%;
-    --popover-foreground: 0 0% 0%;
+    --popover: 45 20% 95%;
+    --popover-foreground: 0 0% 15%;
 
-    --primary: 0 0% 0%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 0 0% 15%;
+    --primary-foreground: 45 20% 97%;
 
     --secondary: 0 0% 85%;
-    --secondary-foreground: 0 0% 0%;
+    --secondary-foreground: 0 0% 15%;
 
     --muted: 0 0% 85%;
-    --muted-foreground: 0 0% 30%;
+    --muted-foreground: 0 0% 40%;
 
     --accent: 0 0% 80%;
-    --accent-foreground: 0 0% 0%;
+    --accent-foreground: 0 0% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
@@ -39,33 +39,33 @@
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --background: 45 20% 97%;  /* Keep light theme even in dark mode */
+    --foreground: 0 0% 15%;
 
-    --card: 0 0% 3%;
-    --card-foreground: 0 0% 100%;
+    --card: 45 20% 95%;
+    --card-foreground: 0 0% 15%;
 
-    --popover: 0 0% 3%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 45 20% 95%;
+    --popover-foreground: 0 0% 15%;
 
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
+    --primary: 0 0% 15%;
+    --primary-foreground: 45 20% 97%;
 
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 85%;
+    --secondary-foreground: 0 0% 15%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 0 0% 85%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 0 0% 20%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0 0% 80%;
+    --accent-foreground: 0 0% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 0 0% 70%;
+    --border: 0 0% 80%;
+    --input: 0 0% 80%;
+    --ring: 0 0% 30%;
 
     --radius: 0;
   }
@@ -96,28 +96,31 @@ html, body, #root {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: minmax(300px, auto);
-  gap: 1px;
-  @apply bg-border;
+  gap: 24px;  /* Increased spacing */
+  @apply bg-background p-6;  /* Added padding and background */
 }
 
 .project-grid > div {
   @apply bg-background;
   position: relative;
   overflow: hidden;
+  border-radius: 12px;  /* Added border radius */
 }
 
 @media (max-width: 768px) {
   .project-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
 .project-card {
-  transition: all 0.3s ease;
+  /* Removed transition for hover effects */
 }
 
+/* Removed hover scale animation */
 .project-card:hover img {
-  transform: scale(1.05);
+  /* No transform on hover */
 }
 
 .details-grid {
