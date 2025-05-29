@@ -51,23 +51,23 @@ const About = () => {
       
       <main className="flex-grow">
         <div className="py-16 px-6 border-b border-border">
-          <h1 className="text-3xl font-light mb-8">About Me</h1>
+          <h1 className="text-4xl font-light mb-8">About Me</h1>
           <div className="max-w-3xl">
-            <p className="text-lg md:text-[18px] font-light mb-6">
+            <p className="text-xl md:text-[20px] font-light mb-6">
               I'm a brand designer based in Madrid, born in Venezuela, with Portuguese heritage. I currently work at a creative agency, and occasionally take on freelance projects that spark creative interest and strategic challenge.
             </p>
-            <p className="text-lg md:text-[18px] font-light mb-6">
+            <p className="text-xl md:text-[20px] font-light mb-6">
               My work centers on building meaningful brand identities by combining strategy, design systems, and visual storytelling. I'm especially passionate about concept-driven design that's clear, consistent, and emotionally engaging.
             </p>
-            <p className="text-lg md:text-[18px] font-light">
+            <p className="text-xl md:text-[20px] font-light">
               [Content to be added later]
             </p>
           </div>
         </div>
         
         <div className="py-12 px-6 border-b border-border">
-          <h2 className="text-xs mb-6">Experience</h2>
-          <div className="grid md:grid-cols-1 gap-8">
+          <h2 className="text-base mb-6">Experience</h2>
+          <div className="grid md:grid-cols-1 gap-0">
             {experiences.map((exp, index) => (
               <ExperienceItem 
                 key={index}
@@ -75,14 +75,15 @@ const About = () => {
                 position={exp.position}
                 period={exp.period}
                 description={exp.description}
+                showDivider={index < experiences.length - 1}
               />
             ))}
           </div>
         </div>
         
         <div className="py-12 px-6 border-b border-border">
-          <h2 className="text-xs mb-6">Education & Development Courses</h2>
-          <div className="grid md:grid-cols-1 gap-8">
+          <h2 className="text-base mb-6">Education & Development Courses</h2>
+          <div className="grid md:grid-cols-1 gap-0">
             {education.map((edu, index) => (
               <ExperienceItem 
                 key={index}
@@ -90,6 +91,7 @@ const About = () => {
                 position={edu.position}
                 period={edu.period}
                 description={edu.description}
+                showDivider={index < education.length - 1}
               />
             ))}
           </div>

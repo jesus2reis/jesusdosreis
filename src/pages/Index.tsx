@@ -56,7 +56,7 @@ const Index = () => {
       <main className="flex-grow">
         <div className="border-b border-border">
           <h1 className="sr-only">Selected Works</h1>
-          <div className="px-6 py-4 text-sm">Selected Works</div>
+          <div className="px-6 py-4 text-base">Selected Works</div>
           
           <div className="project-grid">
             {isLoading ? (
@@ -76,8 +76,8 @@ const Index = () => {
         <AboutSection />
         
         <div className="py-12 px-6 border-b border-border">
-          <h2 className="mb-6 text-sm">Experience</h2>
-          <div className="grid md:grid-cols-1 gap-8">
+          <h2 className="mb-6 text-base">Experience</h2>
+          <div className="grid md:grid-cols-1 gap-0">
             {experiences.map((exp, index) => (
               <ExperienceItem 
                 key={index}
@@ -85,14 +85,15 @@ const Index = () => {
                 position={exp.position}
                 period={exp.period}
                 description={exp.description}
+                showDivider={index < experiences.length - 1}
               />
             ))}
           </div>
         </div>
         
         <div className="py-12 px-6 border-b border-border">
-          <h2 className="mb-6 text-sm">Education & Development Courses</h2>
-          <div className="grid md:grid-cols-1 gap-8">
+          <h2 className="mb-6 text-base">Education & Development Courses</h2>
+          <div className="grid md:grid-cols-1 gap-0">
             {education.map((edu, index) => (
               <ExperienceItem
                 key={index}
@@ -100,6 +101,7 @@ const Index = () => {
                 position={edu.position}
                 period={edu.period}
                 description={edu.description}
+                showDivider={index < education.length - 1}
               />
             ))}
           </div>

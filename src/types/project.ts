@@ -13,6 +13,7 @@ export interface Project {
   featured?: boolean;
   excerpt?: string;
   tags?: string[];
+  type_of_work?: string;
   sort_order?: number;
   created_at: string;
   updated_at: string;

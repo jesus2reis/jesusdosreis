@@ -22,7 +22,7 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground animate-fade-in">
-      <Navigation title={project.title} subtitle="" />
+      <Navigation title="Jesús dos Reis" subtitle="" />
       
       <main className="flex-grow">
         <div className="p-6">
@@ -31,28 +31,35 @@ const ProjectDetail = () => {
             <span>Back</span>
           </Link>
           
-          <h1 className="font-light mb-12 text-4xl">{project.title}</h1>
+          <h1 className="font-light mb-12 text-5xl">{project.title}</h1>
           
           <div className="details-grid mb-12">
             <div className="space-y-6">
               {project.client && (
                 <div className="border-t border-border pt-4">
-                  <div className="text-xs text-muted-foreground mb-1">Client</div>
-                  <div className="text-sm">{project.client}</div>
+                  <div className="text-sm text-muted-foreground mb-1">Client</div>
+                  <div className="text-base">{project.client}</div>
+                </div>
+              )}
+              
+              {project.type_of_work && (
+                <div className="border-t border-border pt-4">
+                  <div className="text-sm text-muted-foreground mb-1">Type of Work</div>
+                  <div className="text-base">{project.type_of_work}</div>
                 </div>
               )}
               
               {project.role && (
                 <div className="border-t border-border pt-4">
-                  <div className="text-xs text-muted-foreground mb-1">Role</div>
-                  <div className="text-sm">{project.role}</div>
+                  <div className="text-sm text-muted-foreground mb-1">Role</div>
+                  <div className="text-base">{project.role}</div>
                 </div>
               )}
               
               {project.year && (
                 <div className="border-t border-border pt-4">
-                  <div className="text-xs text-muted-foreground mb-1">Year</div>
-                  <div className="text-sm">{project.year}</div>
+                  <div className="text-sm text-muted-foreground mb-1">Year</div>
+                  <div className="text-base">{project.year}</div>
                 </div>
               )}
             </div>
@@ -60,15 +67,15 @@ const ProjectDetail = () => {
             <div className="space-y-12 border-t border-border pt-4 md:ml-8">
               {project.challenge && (
                 <div className="mb-8">
-                  <h2 className="text-sm mb-4">Challenge</h2>
-                  <p className="text-base font-light">{project.challenge}</p>
+                  <h2 className="text-base mb-4">Challenge</h2>
+                  <p className="text-lg font-light">{project.challenge}</p>
                 </div>
               )}
               
               {project.solution && (
                 <div>
-                  <h2 className="text-sm mb-4">Solution</h2>
-                  <p className="text-base font-light">{project.solution}</p>
+                  <h2 className="text-base mb-4">Solution</h2>
+                  <p className="text-lg font-light">{project.solution}</p>
                 </div>
               )}
             </div>
