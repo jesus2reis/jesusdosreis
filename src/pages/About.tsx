@@ -2,7 +2,6 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import AboutSection from '../components/AboutSection';
 import ExperienceItem from '../components/ExperienceItem';
 import ContactSection from '../components/ContactSection';
 
@@ -51,22 +50,40 @@ const About = () => {
       
       <main className="flex-grow">
         <div className="py-16 px-6 border-b border-border">
-          <h1 className="text-4xl font-light mb-8">About Me</h1>
-          <div className="max-w-3xl">
-            <p className="text-xl md:text-[20px] font-light mb-6">
-              I'm a brand designer based in Madrid, born in Venezuela, with Portuguese heritage. I currently work at a creative agency, and occasionally take on freelance projects that spark creative interest and strategic challenge.
-            </p>
-            <p className="text-xl md:text-[20px] font-light mb-6">
-              My work centers on building meaningful brand identities by combining strategy, design systems, and visual storytelling. I'm especially passionate about concept-driven design that's clear, consistent, and emotionally engaging.
-            </p>
-            <p className="text-xl md:text-[20px] font-light">
-              [Content to be added later]
-            </p>
+          <h1 className="text-5xl font-light mb-12">About Me</h1>
+          
+          {/* Two column layout with text on left and photo placeholder on right */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl">
+            {/* Text Content - Takes 2/3 of the space */}
+            <div className="lg:col-span-2">
+              <div className="space-y-8 max-w-4xl">
+                <p className="text-2xl font-light leading-relaxed">
+                  I'm a brand designer based in Madrid, born in Venezuela, with Portuguese heritage. I currently work at a creative agency, and occasionally take on freelance projects that spark creative interest and strategic challenge.
+                </p>
+                <p className="text-2xl font-light leading-relaxed">
+                  My work centers on building meaningful brand identities by combining strategy, design systems, and visual storytelling. I'm especially passionate about concept-driven design that's clear, consistent, and emotionally engaging.
+                </p>
+                <p className="text-2xl font-light leading-relaxed">
+                  [Content to be added later]
+                </p>
+              </div>
+            </div>
+            
+            {/* Photo Placeholder - Takes 1/3 of the space */}
+            <div className="lg:col-span-1">
+              <div className="aspect-[3/4] bg-muted/20 border border-border/30 rounded-lg flex items-center justify-center">
+                <div className="text-center text-muted-foreground">
+                  <div className="text-4xl mb-2">📸</div>
+                  <p className="text-base">Photo of Jesús</p>
+                  <p className="text-sm opacity-60">Placeholder</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         
         <div className="py-12 px-6 border-b border-border">
-          <h2 className="text-base mb-6">Experience</h2>
+          <h2 className="text-lg mb-6">Experience</h2>
           <div className="grid md:grid-cols-1 gap-0">
             {experiences.map((exp, index) => (
               <ExperienceItem 
@@ -82,7 +99,7 @@ const About = () => {
         </div>
         
         <div className="py-12 px-6 border-b border-border">
-          <h2 className="text-base mb-6">Education & Development Courses</h2>
+          <h2 className="text-lg mb-6">Education & Development Courses</h2>
           <div className="grid md:grid-cols-1 gap-0">
             {education.map((edu, index) => (
               <ExperienceItem 
