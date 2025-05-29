@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AspectRatio } from './ui/aspect-ratio';
 
 interface ProjectCardProps {
-  id: string;  // Changed from number to string to match Supabase UUID
+  slug: string;
   title: string;
   image?: string;
   vimeoId?: string;
@@ -12,7 +12,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ 
-  id, 
+  slug, 
   title, 
   image,
   vimeoId,
@@ -21,7 +21,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   
-  const placeholderImage = image || `https://source.unsplash.com/collection/4320577/${id}`;
+  const placeholderImage = image || `https://source.unsplash.com/collection/4320577/${slug}`;
   
   useEffect(() => {
     const handleVideoLoaded = () => {
@@ -39,7 +39,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <Link 
-      to={`/project/${id}`} 
+      to={`/project/${slug}`} 
       className={`project-card block w-full h-full relative overflow-hidden rounded-xl ${className}`}
     >
       <AspectRatio ratio={4/3} className="w-full h-full">

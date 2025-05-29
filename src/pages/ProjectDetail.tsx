@@ -7,8 +7,8 @@ import { ArrowLeft } from 'lucide-react';
 import { useProject } from '@/hooks/useProject';
 
 const ProjectDetail = () => {
-  const { id } = useParams<{ id: string }>();
-  const { data, isLoading } = useProject(id || '');
+  const { slug } = useParams<{ slug: string }>();
+  const { data, isLoading } = useProject(slug || '');
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -91,7 +91,7 @@ const ProjectDetail = () => {
         {images?.map((image, index) => (
           <div key={index} className="border-t border-border flex items-center justify-center relative overflow-hidden">
             <div className="w-full h-full">
-              <img src={image.url} alt={`Project image ${index + 1}`} className="w-full h-auto object-cover" />
+              <img src={image.url} alt={image.alt_text || `Project image ${index + 1}`} className="w-full h-auto object-cover" />
             </div>
           </div>
         ))}

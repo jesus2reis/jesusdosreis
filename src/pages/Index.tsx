@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -63,7 +64,7 @@ const Index = () => {
             ) : projects?.map(project => (
               <div key={project.id}>
                 <ProjectCard
-                  id={project.id}
+                  slug={project.slug}
                   title={project.title}
                   vimeoId={project.vimeo_id}
                 />

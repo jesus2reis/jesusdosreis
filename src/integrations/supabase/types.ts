@@ -11,28 +11,46 @@ export type Database = {
     Tables: {
       project_images: {
         Row: {
+          alt_text: string | null
+          caption: string | null
           created_at: string
+          file_size: number | null
+          height: number | null
           id: string
+          image_type: string | null
           position: number
           project_id: string
           updated_at: string
           url: string
+          width: number | null
         }
         Insert: {
+          alt_text?: string | null
+          caption?: string | null
           created_at?: string
+          file_size?: number | null
+          height?: number | null
           id?: string
+          image_type?: string | null
           position?: number
           project_id: string
           updated_at?: string
           url: string
+          width?: number | null
         }
         Update: {
+          alt_text?: string | null
+          caption?: string | null
           created_at?: string
+          file_size?: number | null
+          height?: number | null
           id?: string
+          image_type?: string | null
           position?: number
           project_id?: string
           updated_at?: string
           url?: string
+          width?: number | null
         }
         Relationships: [
           {
@@ -49,9 +67,15 @@ export type Database = {
           challenge: string | null
           client: string | null
           created_at: string
+          excerpt: string | null
+          featured: boolean | null
           id: string
           role: string | null
+          slug: string
           solution: string | null
+          sort_order: number | null
+          status: string | null
+          tags: string[] | null
           title: string
           updated_at: string
           vimeo_id: string | null
@@ -61,9 +85,15 @@ export type Database = {
           challenge?: string | null
           client?: string | null
           created_at?: string
+          excerpt?: string | null
+          featured?: boolean | null
           id?: string
           role?: string | null
+          slug: string
           solution?: string | null
+          sort_order?: number | null
+          status?: string | null
+          tags?: string[] | null
           title: string
           updated_at?: string
           vimeo_id?: string | null
@@ -73,9 +103,15 @@ export type Database = {
           challenge?: string | null
           client?: string | null
           created_at?: string
+          excerpt?: string | null
+          featured?: boolean | null
           id?: string
           role?: string | null
+          slug?: string
           solution?: string | null
+          sort_order?: number | null
+          status?: string | null
+          tags?: string[] | null
           title?: string
           updated_at?: string
           vimeo_id?: string | null
@@ -88,7 +124,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      generate_slug: {
+        Args: { input_text: string }
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never

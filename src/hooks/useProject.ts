@@ -3,20 +3,24 @@ import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import type { Project, ProjectImage } from '@/types/project';
 
-export function useProject(id: string) {
+export function useProject(slug: string) {
   return useQuery({
-    queryKey: ['project', id],
+    queryKey: ['project', slug],
     queryFn: async (): Promise<{project: Project, images: ProjectImage[]}> => {
       const [projectResult, imagesResult] = await Promise.all([
         supabase
           .from('projects')
           .select('*')
-          .eq('id', id)
+          .eq('slug', slug)
           .single(),
         supabase
           .from('project_images')
           .select('*')
-          .eq('project_id', id)
+          .eq('project_id', (await supabase
+            .from('projects')
+            .select('id')
+            .eq('slug', slug)
+            .single()).data?.id || '')
           .order('position', { ascending: true })
       ]);
 
@@ -28,6 +32,6 @@ export function useProject(id: string) {
         images: imagesResult.data
       };
     },
-    enabled: !!id,
+    enabled: !!slug,
   });
 }
