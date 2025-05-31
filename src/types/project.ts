@@ -3,8 +3,8 @@ export interface Project {
   id: string;
   title: string;
   slug: string;
-  client?: string;
-  role?: string;
+  area?: string;
+  tipo?: string;
   year?: string;
   challenge?: string;
   solution?: string;

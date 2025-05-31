@@ -10,11 +10,11 @@ const ProjectDetail = () => {
   const { data, isLoading } = useProject(slug || '');
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Cargando...</div>;
   }
 
   if (!data?.project) {
-    return <div>Project not found</div>;
+    return <div>Proyecto no encontrado</div>;
   }
 
   const { project, images } = data;
@@ -46,30 +46,23 @@ const ProjectDetail = () => {
             
             {/* Left Column - Project Details (1/4 width) */}
             <div className="lg:col-span-1 space-y-8">
-              {project.client && (
+              {project.area && (
                 <div>
-                  <div className="text-sm text-muted-foreground mb-2 uppercase tracking-wide">Client</div>
-                  <div className="text-xl">{project.client}</div>
+                  <div className="text-sm text-muted-foreground mb-2 uppercase tracking-wide">Área</div>
+                  <div className="text-xl">{project.area}</div>
                 </div>
               )}
               
-              {project.type_of_work && (
+              {project.tipo && (
                 <div>
-                  <div className="text-sm text-muted-foreground mb-2 uppercase tracking-wide">Type of Work</div>
-                  <div className="text-xl">{project.type_of_work}</div>
-                </div>
-              )}
-              
-              {project.role && (
-                <div>
-                  <div className="text-sm text-muted-foreground mb-2 uppercase tracking-wide">Role</div>
-                  <div className="text-xl">{project.role}</div>
+                  <div className="text-sm text-muted-foreground mb-2 uppercase tracking-wide">Tipo de Trabajo</div>
+                  <div className="text-xl">{project.tipo}</div>
                 </div>
               )}
               
               {project.year && (
                 <div>
-                  <div className="text-sm text-muted-foreground mb-2 uppercase tracking-wide">Year</div>
+                  <div className="text-sm text-muted-foreground mb-2 uppercase tracking-wide">Año</div>
                   <div className="text-xl">{project.year}</div>
                 </div>
               )}
@@ -79,14 +72,14 @@ const ProjectDetail = () => {
             <div className="lg:col-span-3 space-y-12">
               {project.challenge && (
                 <div>
-                  <h2 className="text-xl mb-6 font-medium uppercase tracking-wide text-muted-foreground">Challenge</h2>
+                  <h2 className="text-xl mb-6 font-medium uppercase tracking-wide text-muted-foreground">Desafío</h2>
                   <p className="text-2xl font-light leading-relaxed">{project.challenge}</p>
                 </div>
               )}
               
               {project.solution && (
                 <div>
-                  <h2 className="text-xl mb-6 font-medium uppercase tracking-wide text-muted-foreground">Solution</h2>
+                  <h2 className="text-xl mb-6 font-medium uppercase tracking-wide text-muted-foreground">Solución</h2>
                   <p className="text-2xl font-light leading-relaxed">{project.solution}</p>
                 </div>
               )}
@@ -99,7 +92,7 @@ const ProjectDetail = () => {
           <div key={index} className="w-full mt-16">
             <img 
               src={image.url} 
-              alt={image.alt_text || `Project image ${index + 1}`} 
+              alt={image.alt_text || `Imagen del proyecto ${index + 1}`} 
               className="w-full h-auto object-cover" 
             />
           </div>

@@ -8,7 +8,7 @@ interface ContactSectionProps {
 }
 
 const ContactSection: React.FC<ContactSectionProps> = ({
-  title = "Contact",
+  title = "Contacto",
   email = "hola@jesusdosreis.com",
   linkedin = "LinkedIn"
 }) => {

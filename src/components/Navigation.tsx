@@ -10,7 +10,7 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({
   title = "Jesús dos Reis",
-  subtitle = "Brand Designer"
+  subtitle = "Diseñador de Marca"
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -45,13 +45,13 @@ const Navigation: React.FC<NavigationProps> = ({
         </Link>
       </div>
       
-      {/* Desktop Navigation - Made text white and more visible */}
+      {/* Desktop Navigation - Cambio a texto negro */}
       <div className="hidden md:flex items-center space-x-6">
-        <Link to="/about" className={`hover:underline text-lg text-white hover:text-white/80 transition-colors ${location.pathname === '/about' ? 'underline' : ''}`}>
-          About
+        <Link to="/about" className={`hover:underline text-lg text-black hover:text-black/80 transition-colors ${location.pathname === '/about' ? 'underline' : ''}`}>
+          Acerca de
         </Link>
-        <Link to="/contact" className={`hover:underline text-lg text-white hover:text-white/80 transition-colors ${location.pathname === '/contact' ? 'underline' : ''}`}>
-          Contact
+        <Link to="/contact" className={`hover:underline text-lg text-black hover:text-black/80 transition-colors ${location.pathname === '/contact' ? 'underline' : ''}`}>
+          Contacto
         </Link>
       </div>
       
@@ -69,8 +69,8 @@ const Navigation: React.FC<NavigationProps> = ({
             <X size={20} />
           </button>
           <div className="text-2xl space-y-6 text-center">
-            <div><Link to="/about" onClick={toggleMenu} className="hover:underline text-white">About</Link></div>
-            <div><Link to="/contact" onClick={toggleMenu} className="hover:underline text-white">Contact</Link></div>
+            <div><Link to="/about" onClick={toggleMenu} className="hover:underline text-white">Acerca de</Link></div>
+            <div><Link to="/contact" onClick={toggleMenu} className="hover:underline text-white">Contacto</Link></div>
           </div>
         </div>
       )}

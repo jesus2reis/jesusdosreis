@@ -9,6 +9,96 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      about_content: {
+        Row: {
+          about_full: string
+          about_short: string
+          created_at: string
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          about_full: string
+          about_short: string
+          created_at?: string
+          id?: string
+          updated_at?: string
+        }
+        Update: {
+          about_full?: string
+          about_short?: string
+          created_at?: string
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      education: {
+        Row: {
+          course: string
+          created_at: string
+          description: string | null
+          id: string
+          school: string
+          sort_order: number | null
+          updated_at: string
+          years: string
+        }
+        Insert: {
+          course: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          school: string
+          sort_order?: number | null
+          updated_at?: string
+          years: string
+        }
+        Update: {
+          course?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          school?: string
+          sort_order?: number | null
+          updated_at?: string
+          years?: string
+        }
+        Relationships: []
+      }
+      experiences: {
+        Row: {
+          company: string
+          created_at: string
+          description: string | null
+          id: string
+          role: string
+          sort_order: number | null
+          updated_at: string
+          years: string
+        }
+        Insert: {
+          company: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          role: string
+          sort_order?: number | null
+          updated_at?: string
+          years: string
+        }
+        Update: {
+          company?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          role?: string
+          sort_order?: number | null
+          updated_at?: string
+          years?: string
+        }
+        Relationships: []
+      }
       project_images: {
         Row: {
           alt_text: string | null
@@ -64,54 +154,54 @@ export type Database = {
       }
       projects: {
         Row: {
+          area: string | null
           challenge: string | null
-          client: string | null
           created_at: string
           excerpt: string | null
           featured: boolean | null
           id: string
-          role: string | null
           slug: string
           solution: string | null
           sort_order: number | null
           status: string | null
           tags: string[] | null
+          tipo: string | null
           title: string
           updated_at: string
           vimeo_id: string | null
           year: string | null
         }
         Insert: {
+          area?: string | null
           challenge?: string | null
-          client?: string | null
           created_at?: string
           excerpt?: string | null
           featured?: boolean | null
           id?: string
-          role?: string | null
           slug: string
           solution?: string | null
           sort_order?: number | null
           status?: string | null
           tags?: string[] | null
+          tipo?: string | null
           title: string
           updated_at?: string
           vimeo_id?: string | null
           year?: string | null
         }
         Update: {
+          area?: string | null
           challenge?: string | null
-          client?: string | null
           created_at?: string
           excerpt?: string | null
           featured?: boolean | null
           id?: string
-          role?: string | null
           slug?: string
           solution?: string | null
           sort_order?: number | null
           status?: string | null
           tags?: string[] | null
+          tipo?: string | null
           title?: string
           updated_at?: string
           vimeo_id?: string | null
