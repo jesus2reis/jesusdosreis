@@ -1,32 +1,54 @@
 
-import { useLocation, Link } from "react-router-dom";
-import { useEffect } from "react";
-import { ArrowLeft } from "lucide-react";
-import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Home, ArrowLeft } from 'lucide-react';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
-  }, [location.pathname]);
-
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white">
+    <div className="min-h-screen flex flex-col bg-background text-foreground">
+      <SEO 
+        title="Página no encontrada - Error 404"
+        description="La página que buscas no existe. Vuelve al inicio para explorar el portfolio de Jesús dos Reis."
+      />
+      
       <Navigation />
       
-      <main className="flex-grow flex flex-col items-center justify-center p-6">
-        <div className="text-center max-w-md">
-          <h1 className="text-4xl font-light mb-4">404</h1>
-          <p className="text-xl text-muted-foreground mb-8">Page not found</p>
-          <Link to="/" className="inline-flex items-center gap-2 hover:underline">
-            <ArrowLeft size={16} />
-            <span>Return to home</span>
-          </Link>
+      <main className="flex-grow flex items-center justify-center px-6">
+        <div className="max-w-md text-center space-y-8">
+          {/* Error Number */}
+          <div className="space-y-4">
+            <h1 className="text-8xl font-light text-muted-foreground">404</h1>
+            <h2 className="text-2xl font-light">Página no encontrada</h2>
+          </div>
+          
+          {/* Description */}
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Lo sentimos, la página que buscas no existe o ha sido movida.
+          </p>
+          
+          {/* Action Buttons */}
+          <div className="space-y-4">
+            <Link 
+              to="/" 
+              className="inline-flex items-center gap-2 bg-foreground text-background px-6 py-3 rounded-lg hover:bg-foreground/90 transition-colors"
+            >
+              <Home size={20} />
+              Volver al inicio
+            </Link>
+            
+            <div className="flex justify-center">
+              <button 
+                onClick={() => window.history.back()}
+                className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <ArrowLeft size={16} />
+                Página anterior
+              </button>
+            </div>
+          </div>
         </div>
       </main>
       

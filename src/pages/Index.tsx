@@ -6,6 +6,7 @@ import ProjectCard from '../components/ProjectCard';
 import AboutSection from '../components/AboutSection';
 import ExperienceItem from '../components/ExperienceItem';
 import ContactSection from '../components/ContactSection';
+import SEO from '../components/SEO';
 import { useProjects } from '@/hooks/useProjects';
 import { useExperiences } from '@/hooks/useExperiences';
 import { useEducation } from '@/hooks/useEducation';
@@ -17,6 +18,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
+      <SEO 
+        title="Jesús dos Reis - Portfolio"
+        description="Portfolio de Jesús dos Reis, diseñador visual y desarrollador frontend especializado en experiencias digitales innovadoras. Explora mis trabajos seleccionados."
+        url="https://jesusdosreis.com"
+      />
+      
       <Navigation />
       
       <main className="flex-grow">

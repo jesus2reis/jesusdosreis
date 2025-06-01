@@ -30,6 +30,9 @@ export interface ProjectImage {
   height?: number;
   file_size?: number;
   image_type?: string;
+  media_type?: 'image' | 'video';
+  vimeo_id?: string;
+  width_type?: 'full' | 'half';
   created_at: string;
   updated_at: string;
 }

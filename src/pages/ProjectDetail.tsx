@@ -3,6 +3,8 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import MediaGallery from '../components/MediaGallery';
+import SEO from '../components/SEO';
 import { useProject } from '@/hooks/useProject';
 
 const ProjectDetail = () => {
@@ -10,17 +12,32 @@ const ProjectDetail = () => {
   const { data, isLoading } = useProject(slug || '');
 
   if (isLoading) {
-    return <div>Cargando...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div>Cargando...</div>
+      </div>
+    );
   }
 
   if (!data?.project) {
-    return <div>Proyecto no encontrado</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div>Proyecto no encontrado</div>
+      </div>
+    );
   }
 
   const { project, images } = data;
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground animate-fade-in">
+      <SEO 
+        title={project.title}
+        description={project.challenge || project.excerpt || `Proyecto ${project.title} - ${project.area || ''} ${project.year || ''}`}
+        type="article"
+        url={`https://jesusdosreis.com/project/${project.slug}`}
+      />
+      
       <Navigation title="Jesús dos Reis" subtitle="" />
       
       <main className="flex-grow">
@@ -87,16 +104,10 @@ const ProjectDetail = () => {
           </div>
         </div>
 
-        {/* Project Images - Full width */}
-        {images?.map((image, index) => (
-          <div key={index} className="w-full mt-16">
-            <img 
-              src={image.url} 
-              alt={image.alt_text || `Imagen del proyecto ${index + 1}`} 
-              className="w-full h-auto object-cover" 
-            />
-          </div>
-        ))}
+        {/* Project Media Gallery */}
+        <div className="mt-16">
+          <MediaGallery items={images || []} />
+        </div>
       </main>
       
       <Footer />
