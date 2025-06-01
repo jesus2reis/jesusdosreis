@@ -30,10 +30,33 @@ const MediaItem: React.FC<MediaItemProps> = ({ item, className = "" }) => {
     }
   }, []);
 
+  // Get object-position based on vertical alignment
+  const getObjectPosition = (alignment?: string) => {
+    switch (alignment) {
+      case 'top':
+        return 'object-top';
+      case 'bottom':
+        return 'object-bottom';
+      default:
+        return 'object-center';
+    }
+  };
+
+  // Create inline styles for max height
+  const getContainerStyles = () => {
+    if (item.max_height) {
+      return { maxHeight: item.max_height };
+    }
+    return {};
+  };
+
   if (item.media_type === 'video' && item.vimeo_id) {
     return (
-      <div className={`w-full relative ${className}`}>
-        <div className="aspect-video relative overflow-hidden rounded-lg bg-muted">
+      <div className={`w-full relative mx-6 ${className}`}>
+        <div 
+          className="aspect-video relative overflow-hidden rounded-lg bg-muted"
+          style={getContainerStyles()}
+        >
           {!isVideoLoaded && (
             <div className="absolute inset-0 flex items-center justify-center bg-muted animate-pulse">
               <Play size={48} className="text-muted-foreground" />
@@ -43,7 +66,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ item, className = "" }) => {
             ref={iframeRef}
             src={`https://player.vimeo.com/video/${item.vimeo_id}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
             allow="autoplay; fullscreen; picture-in-picture"
-            className="w-full h-full absolute inset-0"
+            className="w-full h-full absolute inset-0 rounded-lg"
             title={item.alt_text || 'Video del proyecto'}
           />
         </div>
@@ -57,13 +80,18 @@ const MediaItem: React.FC<MediaItemProps> = ({ item, className = "" }) => {
   }
 
   return (
-    <div className={`w-full ${className}`}>
-      <img 
-        src={item.url} 
-        alt={item.alt_text || 'Imagen del proyecto'} 
-        className="w-full h-auto object-cover rounded-lg" 
-        loading="lazy"
-      />
+    <div className={`w-full mx-6 ${className}`}>
+      <div 
+        className="overflow-hidden rounded-lg"
+        style={getContainerStyles()}
+      >
+        <img 
+          src={item.url} 
+          alt={item.alt_text || 'Imagen del proyecto'} 
+          className={`w-full h-full object-cover rounded-lg ${getObjectPosition(item.vertical_alignment)}`}
+          loading="lazy"
+        />
+      </div>
       {item.caption && (
         <p className="mt-2 text-sm text-muted-foreground text-center">
           {item.caption}

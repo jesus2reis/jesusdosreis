@@ -1,15 +1,18 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useAboutContent } from '@/hooks/useAboutContent';
 
 interface AboutSectionProps {
   title?: string;
   content?: React.ReactNode;
+  showLearnMore?: boolean;
 }
 
 const AboutSection: React.FC<AboutSectionProps> = ({
-  title = "Acerca de mí",
-  content
+  title = "Sobre mí",
+  content,
+  showLearnMore = false
 }) => {
   const { data: aboutContent, isLoading } = useAboutContent();
 
@@ -35,6 +38,16 @@ const AboutSection: React.FC<AboutSectionProps> = ({
           </p>
         )}
       </div>
+      {showLearnMore && (
+        <div className="mt-6">
+          <Link 
+            to="/about" 
+            className="inline-flex items-center text-foreground hover:underline text-lg"
+          >
+            Conoce más →
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

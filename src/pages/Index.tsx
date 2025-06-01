@@ -28,8 +28,8 @@ const Index = () => {
       
       <main className="flex-grow">
         <div className="border-b border-border">
-          <h1 className="sr-only">Trabajos Seleccionados</h1>
-          <div className="px-6 py-4 text-base">Trabajos Seleccionados</div>
+          <h1 className="sr-only">Algunos proyectos</h1>
+          <div className="px-6 py-4 text-base">Algunos proyectos</div>
           
           <div className="project-grid">
             {projectsLoading ? (
@@ -46,7 +46,7 @@ const Index = () => {
           </div>
         </div>
         
-        <AboutSection />
+        <AboutSection showLearnMore={true} />
         
         <div className="py-12 px-6 border-b border-border">
           <h2 className="mb-6 text-base">Experiencia</h2>
@@ -67,7 +67,7 @@ const Index = () => {
         </div>
         
         <div className="py-12 px-6 border-b border-border">
-          <h2 className="mb-6 text-base">Educación y Cursos de Desarrollo</h2>
+          <h2 className="mb-6 text-base">Educación y otros cursos</h2>
           <div className="grid md:grid-cols-1 gap-0">
             {educationLoading ? (
               <div>Cargando educación...</div>

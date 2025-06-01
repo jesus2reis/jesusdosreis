@@ -10,7 +10,7 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({
   title = "Jesús dos Reis",
-  subtitle = "Diseñador de Marca"
+  subtitle = "Brand Designer"
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -48,7 +48,7 @@ const Navigation: React.FC<NavigationProps> = ({
       {/* Desktop Navigation - Cambio a texto negro */}
       <div className="hidden md:flex items-center space-x-6">
         <Link to="/about" className={`hover:underline text-lg text-black hover:text-black/80 transition-colors ${location.pathname === '/about' ? 'underline' : ''}`}>
-          Acerca de
+          Sobre mí
         </Link>
         <Link to="/contact" className={`hover:underline text-lg text-black hover:text-black/80 transition-colors ${location.pathname === '/contact' ? 'underline' : ''}`}>
           Contacto
@@ -69,7 +69,7 @@ const Navigation: React.FC<NavigationProps> = ({
             <X size={20} />
           </button>
           <div className="text-2xl space-y-6 text-center">
-            <div><Link to="/about" onClick={toggleMenu} className="hover:underline text-white">Acerca de</Link></div>
+            <div><Link to="/about" onClick={toggleMenu} className="hover:underline text-white">Sobre mí</Link></div>
             <div><Link to="/contact" onClick={toggleMenu} className="hover:underline text-white">Contacto</Link></div>
           </div>
         </div>

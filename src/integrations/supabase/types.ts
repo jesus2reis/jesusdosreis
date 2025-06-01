@@ -108,11 +108,13 @@ export type Database = {
           height: number | null
           id: string
           image_type: string | null
+          max_height: string | null
           media_type: Database["public"]["Enums"]["media_type"] | null
           position: number
           project_id: string
           updated_at: string
           url: string
+          vertical_alignment: string | null
           vimeo_id: string | null
           width: number | null
           width_type: Database["public"]["Enums"]["width_type"] | null
@@ -125,11 +127,13 @@ export type Database = {
           height?: number | null
           id?: string
           image_type?: string | null
+          max_height?: string | null
           media_type?: Database["public"]["Enums"]["media_type"] | null
           position?: number
           project_id: string
           updated_at?: string
           url: string
+          vertical_alignment?: string | null
           vimeo_id?: string | null
           width?: number | null
           width_type?: Database["public"]["Enums"]["width_type"] | null
@@ -142,11 +146,13 @@ export type Database = {
           height?: number | null
           id?: string
           image_type?: string | null
+          max_height?: string | null
           media_type?: Database["public"]["Enums"]["media_type"] | null
           position?: number
           project_id?: string
           updated_at?: string
           url?: string
+          vertical_alignment?: string | null
           vimeo_id?: string | null
           width?: number | null
           width_type?: Database["public"]["Enums"]["width_type"] | null
