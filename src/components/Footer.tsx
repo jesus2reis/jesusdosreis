@@ -10,7 +10,7 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({
-  email = "hello@jesusdosreis.com",
+  email = "hola@jesusdosreis.com",
   year = new Date().getFullYear(),
   name = "Jesús dos Reis",
   title = "Brand Designer"

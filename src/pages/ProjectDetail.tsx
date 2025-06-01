@@ -40,23 +40,25 @@ const ProjectDetail = () => {
       
       <Navigation title="Jesús dos Reis" subtitle="" />
       
-      <main className="flex-grow">
-        {/* Video Section - First thing visible, full width */}
+      <main className="flex-grow overflow-x-hidden">
+        {/* Video Section - Constrained width to prevent overflow */}
         {project.vimeo_id && (
-          <div className="w-full">
-            <iframe
-              src={`https://player.vimeo.com/video/${project.vimeo_id}?background=1&autoplay=1&loop=1&byline=0&title=0`}
-              className="w-full aspect-video"
-              allow="autoplay; fullscreen; picture-in-picture"
-              title={project.title}
-            />
+          <div className="w-full max-w-full">
+            <div className="aspect-video max-w-full">
+              <iframe
+                src={`https://player.vimeo.com/video/${project.vimeo_id}?background=1&autoplay=1&loop=1&byline=0&title=0`}
+                className="w-full h-full"
+                allow="autoplay; fullscreen; picture-in-picture"
+                title={project.title}
+              />
+            </div>
           </div>
         )}
 
-        {/* Project Content */}
-        <div className="p-6 max-w-7xl mx-auto">
+        {/* Project Content - Constrained container */}
+        <div className="p-6 max-w-7xl mx-auto w-full">
           {/* Project Title */}
-          <h1 className="text-6xl font-light mb-16 leading-tight">{project.title}</h1>
+          <h1 className="text-6xl font-light mb-16 leading-tight break-words">{project.title}</h1>
           
           {/* Two Column Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-16">
@@ -104,8 +106,8 @@ const ProjectDetail = () => {
           </div>
         </div>
 
-        {/* Project Media Gallery */}
-        <div className="mt-16">
+        {/* Project Media Gallery - Constrained width */}
+        <div className="mt-16 w-full max-w-full overflow-x-hidden">
           <MediaGallery items={images || []} />
         </div>
       </main>

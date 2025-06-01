@@ -58,7 +58,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ item, className = "" }) => {
           style={getContainerStyles()}
         >
           {!isVideoLoaded && (
-            <div className="absolute inset-0 flex items-center justify-center bg-muted animate-pulse">
+            <div className="absolute inset-0 flex items-center justify-center bg-muted animate-pulse rounded-lg">
               <Play size={48} className="text-muted-foreground" />
             </div>
           )}
@@ -143,15 +143,15 @@ const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
   const rows = createRows();
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 w-full max-w-full overflow-x-hidden">
       {rows.map((row, rowIndex) => (
-        <div key={rowIndex} className="w-full">
+        <div key={rowIndex} className="w-full max-w-full">
           {row.length === 1 ? (
             // Elemento de ancho completo
             <MediaItem item={row[0]} />
           ) : (
             // Elementos de media anchura - solo en desktop
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-full">
               {row.map((item, itemIndex) => (
                 <MediaItem key={item.id} item={item} />
               ))}
