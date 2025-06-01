@@ -1,15 +1,17 @@
 
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import MediaGallery from '../components/MediaGallery';
 import SEO from '../components/SEO';
 import { useProject } from '@/hooks/useProject';
+import { useProjects } from '@/hooks/useProjects';
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const { data, isLoading } = useProject(slug || '');
+  const { data: allProjects } = useProjects();
 
   if (isLoading) {
     return (
@@ -29,6 +31,12 @@ const ProjectDetail = () => {
 
   const { project, images } = data;
 
+  // Find current project index and calculate navigation
+  const currentIndex = allProjects?.findIndex(p => p.slug === slug) || 0;
+  const nextProject = allProjects && currentIndex < allProjects.length - 1 
+    ? allProjects[currentIndex + 1] 
+    : allProjects?.[0]; // Loop back to first project
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground animate-fade-in">
       <SEO 
@@ -40,11 +48,11 @@ const ProjectDetail = () => {
       
       <Navigation title="Jesús dos Reis" subtitle="" />
       
-      <main className="flex-grow overflow-x-hidden">
-        {/* Video Section - Constrained width to prevent overflow */}
+      <main className="flex-grow">
+        {/* Video Section - Full width */}
         {project.vimeo_id && (
-          <div className="w-full max-w-full">
-            <div className="aspect-video max-w-full">
+          <div className="w-full">
+            <div className="aspect-video w-full">
               <iframe
                 src={`https://player.vimeo.com/video/${project.vimeo_id}?background=1&autoplay=1&loop=1&byline=0&title=0`}
                 className="w-full h-full"
@@ -106,9 +114,30 @@ const ProjectDetail = () => {
           </div>
         </div>
 
-        {/* Project Media Gallery - Constrained width */}
-        <div className="mt-16 w-full max-w-full overflow-x-hidden">
+        {/* Project Media Gallery */}
+        <div className="mt-16 w-full">
           <MediaGallery items={images || []} />
+        </div>
+
+        {/* Navigation Buttons */}
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="flex justify-between items-center">
+            <Link 
+              to="/" 
+              className="text-lg hover:underline transition-all duration-200"
+            >
+              ← Volver
+            </Link>
+            
+            {nextProject && (
+              <Link 
+                to={`/project/${nextProject.slug}`}
+                className="text-lg hover:underline transition-all duration-200"
+              >
+                Ver otro proyecto →
+              </Link>
+            )}
+          </div>
         </div>
       </main>
       

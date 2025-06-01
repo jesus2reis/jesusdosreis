@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -21,7 +20,7 @@ const About = () => {
         <div className="py-16 px-6 border-b border-border">
           <h1 className="text-5xl font-light mb-12">Acerca de Mí</h1>
           
-          {/* Two column layout with text on left and photo placeholder on right */}
+          {/* Two column layout with text on left and photo on right */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl">
             {/* Text Content - Takes 2/3 of the space */}
             <div className="lg:col-span-2">
@@ -37,17 +36,29 @@ const About = () => {
                     ))}
                   </>
                 )}
+                
+                {/* LinkedIn Link */}
+                <div className="pt-8">
+                  <a 
+                    href="https://www.linkedin.com/in/jesusdosreis/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-foreground hover:underline text-lg"
+                  >
+                    Conecta conmigo en LinkedIn →
+                  </a>
+                </div>
               </div>
             </div>
             
-            {/* Photo Placeholder - Takes 1/3 of the space */}
-            <div className="lg:col-span-1">
-              <div className="aspect-[3/4] bg-muted/20 border border-border/30 rounded-lg flex items-center justify-center">
-                <div className="text-center text-muted-foreground">
-                  <div className="text-4xl mb-2">📸</div>
-                  <p className="text-base">Foto de Jesús</p>
-                  <p className="text-sm opacity-60">Marcador</p>
-                </div>
+            {/* Photo - Takes 1/3 of the space, aligned to the right */}
+            <div className="lg:col-span-1 flex justify-end">
+              <div className="aspect-[3/4] w-full max-w-sm">
+                <img 
+                  src="http://jesusdosreis.com/images/jesus/jesusdosreis.jpg"
+                  alt="Jesús dos Reis"
+                  className="w-full h-full object-cover rounded-xl"
+                />
               </div>
             </div>
           </div>
@@ -72,7 +83,7 @@ const About = () => {
         </div>
         
         <div className="py-12 px-6 border-b border-border">
-          <h2 className="text-lg mb-6">Educación y Cursos de Desarrollo</h2>
+          <h2 className="text-lg mb-6">Educación y otros cursos</h2>
           <div className="grid md:grid-cols-1 gap-0">
             {educationLoading ? (
               <div>Cargando educación...</div>
