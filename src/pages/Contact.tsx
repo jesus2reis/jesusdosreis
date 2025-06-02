@@ -6,9 +6,7 @@ import Footer from '../components/Footer';
 const Contact = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
-      <div className="border-b border-border">
-        <Navigation />
-      </div>
+      <Navigation />
       
       <main className="flex-grow">
         {/* Hero Section */}
@@ -67,6 +65,8 @@ const Contact = () => {
             </div>
           </div>
         </div>
+        
+        <div className="border-t border-border"></div>
       </main>
       
       <Footer />

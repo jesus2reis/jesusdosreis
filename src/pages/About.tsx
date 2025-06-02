@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -18,7 +19,7 @@ const About = () => {
       
       <main className="flex-grow">
         <div className="py-16 px-6 border-b border-border">
-          <h1 className="text-5xl font-light mb-12">Acerca de Mí</h1>
+          <h1 className="text-5xl font-light mb-12">Sobre mí</h1>
           
           {/* Two column layout with text on left and photo on right */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl">

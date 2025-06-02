@@ -9,8 +9,7 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = ({
-  title = "Jesús dos Reis",
-  subtitle = "Brand Designer"
+  title = "Jesús dos Reis"
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -38,10 +37,9 @@ const Navigation: React.FC<NavigationProps> = ({
     <nav className="w-full py-4 px-6 flex justify-between items-center border-b border-white/10">
       <div className="flex flex-col">
         <Link to="/" className="group">
-          <div className="text-lg font-light">
+          <div className="text-5xl font-light">
             {title}
           </div>
-          <div className="text-sm text-muted-foreground">{subtitle}</div>
         </Link>
       </div>
       
