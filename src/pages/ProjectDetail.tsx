@@ -54,7 +54,7 @@ const ProjectDetail = () => {
           <div className="w-full">
             <div className="aspect-video w-full">
               <iframe
-                src={`https://player.vimeo.com/video/${project.vimeo_id}?background=1&autoplay=1&loop=1&byline=0&title=0`}
+                src={`https://player.vimeo.com/video/${project.vimeo_id}?background=1&autoplay=1&loop=1&byline=0&title=0&quality=1080p&preload=auto`}
                 className="w-full h-full"
                 allow="autoplay; fullscreen; picture-in-picture"
                 title={project.title}
@@ -64,7 +64,7 @@ const ProjectDetail = () => {
         )}
 
         {/* Project Content - Constrained container */}
-        <div className="p-6 max-w-7xl mx-auto w-full">
+        <div className="px-6 py-16 max-w-7xl mx-auto w-full">
           {/* Project Title */}
           <h1 className="text-6xl font-light mb-16 leading-tight break-words">{project.title}</h1>
           
@@ -115,7 +115,7 @@ const ProjectDetail = () => {
         </div>
 
         {/* Project Media Gallery */}
-        <div className="mt-16 w-full">
+        <div className="w-full">
           <MediaGallery items={images || []} />
         </div>
 

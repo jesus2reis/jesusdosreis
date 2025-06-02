@@ -43,7 +43,7 @@ const Contact = () => {
                   <div>
                     <h3 className="text-xl font-medium mb-2">LinkedIn</h3>
                     <a 
-                      href="https://linkedin.com/in/username" 
+                      href="https://www.linkedin.com/in/jesusdosreis/" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-2xl text-muted-foreground hover:text-foreground transition-colors underline"

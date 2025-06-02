@@ -52,7 +52,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ item, className = "" }) => {
 
   if (item.media_type === 'video' && item.vimeo_id) {
     return (
-      <div className={`w-full px-6 ${className}`}>
+      <div className={`w-full ${className}`}>
         <div 
           className="aspect-video relative overflow-hidden rounded-xl bg-muted"
           style={getContainerStyles()}
@@ -64,14 +64,14 @@ const MediaItem: React.FC<MediaItemProps> = ({ item, className = "" }) => {
           )}
           <iframe
             ref={iframeRef}
-            src={`https://player.vimeo.com/video/${item.vimeo_id}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+            src={`https://player.vimeo.com/video/${item.vimeo_id}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&quality=1080p&preload=auto`}
             allow="autoplay; fullscreen; picture-in-picture"
             className="w-full h-full absolute inset-0 rounded-xl"
             title={item.alt_text || 'Video del proyecto'}
           />
         </div>
         {item.caption && (
-          <p className="mt-4 text-sm text-muted-foreground text-center px-6">
+          <p className="mt-4 text-sm text-muted-foreground text-center">
             {item.caption}
           </p>
         )}
@@ -80,7 +80,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ item, className = "" }) => {
   }
 
   return (
-    <div className={`w-full px-6 ${className}`}>
+    <div className={`w-full ${className}`}>
       <div 
         className="overflow-hidden rounded-xl"
         style={getContainerStyles()}
@@ -93,7 +93,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ item, className = "" }) => {
         />
       </div>
       {item.caption && (
-        <p className="mt-4 text-sm text-muted-foreground text-center px-6">
+        <p className="mt-4 text-sm text-muted-foreground text-center">
           {item.caption}
         </p>
       )}
@@ -143,22 +143,24 @@ const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
   const rows = createRows();
 
   return (
-    <div className="space-y-12 w-full max-w-7xl mx-auto">
-      {rows.map((row, rowIndex) => (
-        <div key={rowIndex} className="w-full">
-          {row.length === 1 ? (
-            // Elemento de ancho completo
-            <MediaItem item={row[0]} />
-          ) : (
-            // Elementos de media anchura - solo en desktop
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {row.map((item, itemIndex) => (
-                <MediaItem key={item.id} item={item} />
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
+    <div className="px-6 py-12 max-w-7xl mx-auto w-full">
+      <div className="space-y-12">
+        {rows.map((row, rowIndex) => (
+          <div key={rowIndex} className="w-full">
+            {row.length === 1 ? (
+              // Elemento de ancho completo
+              <MediaItem item={row[0]} />
+            ) : (
+              // Elementos de media anchura - solo en desktop
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {row.map((item, itemIndex) => (
+                  <MediaItem key={item.id} item={item} />
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

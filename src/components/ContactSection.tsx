@@ -23,7 +23,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
         </div>
         <div>
           <a 
-            href="https://linkedin.com/in/username" 
+            href="https://www.linkedin.com/in/jesusdosreis/" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="text-lg hover:underline"
