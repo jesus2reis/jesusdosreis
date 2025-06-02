@@ -1,13 +1,10 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-
 interface NavigationProps {
   title?: string;
   subtitle?: string;
 }
-
 const Navigation: React.FC<NavigationProps> = ({
   title = "Jesús dos Reis"
 }) => {
@@ -15,29 +12,24 @@ const Navigation: React.FC<NavigationProps> = ({
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (isMenuOpen && menuRef.current && !menuRef.current.contains(event.target as Node) && buttonRef.current && !buttonRef.current.contains(event.target as Node)) {
         setIsMenuOpen(false);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isMenuOpen]);
-
-  return (
-    <nav className="w-full py-4 px-6 flex justify-between items-center border-b border-white/10">
+  return <nav className="w-full py-4 px-6 flex justify-between items-center border-b border-white/10">
       <div className="flex flex-col">
         <Link to="/" className="group">
-          <div className="text-5xl font-light">
+          <div className="text-4xl tracking-tighter">
             {title}
           </div>
         </Link>
@@ -61,8 +53,7 @@ const Navigation: React.FC<NavigationProps> = ({
       </div>
       
       {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div ref={menuRef} className="fixed inset-0 bg-black z-50 p-6 flex flex-col items-center justify-center animate-fade-in md:hidden">
+      {isMenuOpen && <div ref={menuRef} className="fixed inset-0 bg-black z-50 p-6 flex flex-col items-center justify-center animate-fade-in md:hidden">
           <button onClick={toggleMenu} className="absolute top-4 right-6 text-white">
             <X size={20} />
           </button>
@@ -70,10 +61,7 @@ const Navigation: React.FC<NavigationProps> = ({
             <div><Link to="/about" onClick={toggleMenu} className="hover:underline text-white">Sobre mí</Link></div>
             <div><Link to="/contact" onClick={toggleMenu} className="hover:underline text-white">Contacto</Link></div>
           </div>
-        </div>
-      )}
-    </nav>
-  );
+        </div>}
+    </nav>;
 };
-
 export default Navigation;
