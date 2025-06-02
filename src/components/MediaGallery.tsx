@@ -109,7 +109,7 @@ const MediaGallery: React.FC<MediaGalleryProps> = ({
   };
   const rows = createRows();
   return <div className="mx-auto w-full">
-      <div className="">
+      <div className="space-y-12">
         {rows.map((row, rowIndex) => <div key={rowIndex} className="w-full">
             {row.length === 1 ?
         // Elemento de ancho completo
