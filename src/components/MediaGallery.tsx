@@ -108,7 +108,7 @@ const MediaGallery: React.FC<MediaGalleryProps> = ({
     return rows;
   };
   const rows = createRows();
-  return <div className="mx-auto w-full px-[24px]">
+  return <div className="mx-auto w-full">
       <div className="space-y-12">
         {rows.map((row, rowIndex) => <div key={rowIndex} className="w-full">
             {row.length === 1 ?
