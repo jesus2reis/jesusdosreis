@@ -7,9 +7,9 @@ const Contact = () => {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <div className="py-20 px-6 text-left">
+        <div className="px-6 text-left pt-20 pb-5">
           <h1 className="font-light mb-6 text-base">Ponte en contacto</h1>
-          <p className="font-light text-muted-foreground max-w-3xl leading-relaxed text-2xl">
+          <p className="text-muted-foreground max-w-3xl text-2xl font-normal">
             Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tu visión.
           </p>
         </div>
@@ -21,7 +21,7 @@ const Contact = () => {
               
               {/* Contact Methods */}
               <div>
-                <h2 className="text-3xl font-light mb-8">Información de Contacto</h2>
+                <h2 className="mb-8 text-base font-light">Información de Contacto</h2>
                 
                 <div className="space-y-8">
                   <div>
@@ -44,7 +44,7 @@ const Contact = () => {
 
               {/* Location */}
               <div>
-                <h2 className="text-3xl font-light mb-8">Ubicación</h2>
+                <h2 className="font-light mb-8 text-base">Ubicación</h2>
                 
                 <div>
                   <h3 className="text-xl font-medium mb-2">Con base en</h3>
