@@ -53,10 +53,12 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				sidebar: {
+					DEFAULT: 'hsl(var(--sidebar))',
+				},
 			},
 			fontFamily: {
-				sans: ['Geist', 'sans-serif'],
-				mono: ['Space Mono', 'monospace'],
+				sans: ['Inter', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
