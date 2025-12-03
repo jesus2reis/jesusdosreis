@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 
@@ -20,24 +19,24 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={`py-4 ${showDivider ? 'border-b border-border/50' : ''}`}>
+    <div className={`py-5 ${showDivider ? 'border-b border-border' : ''}`}>
       <div 
-        className="flex flex-col sm:flex-row justify-between items-start sm:items-center cursor-pointer gap-1" 
+        className="flex flex-col sm:flex-row justify-between items-start sm:items-center cursor-pointer gap-2" 
         onClick={() => setIsOpen(!isOpen)}
       >
         <div>
-          <h3 className="font-light hover:font-medium text-xl">{title}</h3>
-          <p className="text-base text-muted-foreground">{position}</p>
+          <h3 className="font-medium text-base">{title}</h3>
+          <p className="text-sm text-muted-foreground">{position}</p>
         </div>
         <div className="flex items-center gap-4">
-          <span className="text-base">{period}</span>
-          <span>{isOpen ? <Minus size={16} /> : <Plus size={16} />}</span>
+          <span className="text-sm text-muted-foreground">{period}</span>
+          <span className="text-muted-foreground">{isOpen ? <Minus size={14} /> : <Plus size={14} />}</span>
         </div>
       </div>
       
-      {isOpen && (
-        <div className="pt-4 text-base text-muted-foreground">
-          <p>{description || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie."}</p>
+      {isOpen && description && (
+        <div className="pt-4 text-sm text-muted-foreground leading-relaxed">
+          <p>{description}</p>
         </div>
       )}
     </div>

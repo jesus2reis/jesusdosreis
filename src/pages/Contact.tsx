@@ -1,64 +1,72 @@
 import React from 'react';
-import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
+import SplitLayout from '../components/layout/SplitLayout';
+import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
+
 const Contact = () => {
-  return <div className="min-h-screen flex flex-col bg-background text-foreground">
-      <Navigation />
-      
-      <main className="flex-grow">
-        {/* Hero Section */}
-        <div className="px-6 text-left pt-20 pb-5">
-          <h1 className="font-light mb-6 text-base">Ponte en contacto</h1>
-          <p className="text-muted-foreground max-w-3xl text-2xl font-normal">
+  return (
+    <SplitLayout>
+      {/* Page Header */}
+      <header className="flex items-center gap-4 p-4 border-b border-border">
+        <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
+          <ArrowLeft size={18} />
+        </Link>
+        <span className="text-sm font-medium uppercase tracking-wide">Contacto</span>
+      </header>
+
+      {/* Main Content */}
+      <section className="border-b border-border">
+        <div className="p-8 lg:p-12">
+          <h1 className="text-2xl lg:text-3xl xl:text-4xl font-light leading-relaxed max-w-3xl mb-8">
             Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tu visión.
-          </p>
+          </h1>
         </div>
+      </section>
 
-        {/* Contact Information */}
-        <div className="py-16 px-6">
-          <div className="max-w-4xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-              
-              {/* Contact Methods */}
-              <div>
-                <h2 className="mb-8 text-base font-light">Información de Contacto</h2>
-                
-                <div className="space-y-8">
-                  <div>
-                    <h3 className="text-xl font-medium mb-2">Email</h3>
-                    <a href="mailto:hola@jesusdosreis.com" className="text-2xl text-muted-foreground hover:text-foreground transition-colors underline">
-                      hola@jesusdosreis.com
-                    </a>
-                    <p className="text-lg text-muted-foreground mt-1">Método de contacto principal</p>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-xl font-medium mb-2">LinkedIn</h3>
-                    <a href="https://www.linkedin.com/in/jesusdosreis/" target="_blank" rel="noopener noreferrer" className="text-2xl text-muted-foreground hover:text-foreground transition-colors underline">
-                      Perfil de LinkedIn
-                    </a>
-                    <p className="text-lg text-muted-foreground mt-1">Red profesional</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Location */}
-              <div>
-                <h2 className="font-light mb-8 text-base">Ubicación</h2>
-                
-                <div>
-                  <h3 className="text-xl font-medium mb-2">Con base en</h3>
-                  <p className="text-2xl text-muted-foreground">Madrid, España</p>
-                </div>
-              </div>
-            </div>
-          </div>
+      {/* Contact Grid */}
+      <section className="grid grid-cols-1 md:grid-cols-2 border-b border-border">
+        {/* Email */}
+        <div className="p-8 lg:p-12 border-b md:border-b-0 md:border-r border-border">
+          <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground block mb-4">
+            Email
+          </span>
+          <a 
+            href="mailto:hola@jesusdosreis.com" 
+            className="text-xl lg:text-2xl hover:underline"
+          >
+            hola@jesusdosreis.com
+          </a>
+          <p className="text-sm text-muted-foreground mt-2">Método de contacto principal</p>
         </div>
         
-        <div className="border-t border-border"></div>
-      </main>
-      
-      <Footer />
-    </div>;
+        {/* LinkedIn */}
+        <div className="p-8 lg:p-12">
+          <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground block mb-4">
+            LinkedIn
+          </span>
+          <a 
+            href="https://www.linkedin.com/in/jesusdosreis/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-xl lg:text-2xl hover:underline"
+          >
+            /in/jesusdosreis
+          </a>
+          <p className="text-sm text-muted-foreground mt-2">Red profesional</p>
+        </div>
+      </section>
+
+      {/* Location */}
+      <section className="border-b border-border">
+        <div className="p-8 lg:p-12">
+          <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground block mb-4">
+            Ubicación
+          </span>
+          <p className="text-xl lg:text-2xl">Madrid, España</p>
+        </div>
+      </section>
+    </SplitLayout>
+  );
 };
+
 export default Contact;
