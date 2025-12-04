@@ -175,6 +175,7 @@ export type Database = {
       projects: {
         Row: {
           area: string | null
+          brief_description: string | null
           challenge: string | null
           created_at: string
           excerpt: string | null
@@ -193,6 +194,7 @@ export type Database = {
         }
         Insert: {
           area?: string | null
+          brief_description?: string | null
           challenge?: string | null
           created_at?: string
           excerpt?: string | null
@@ -211,6 +213,7 @@ export type Database = {
         }
         Update: {
           area?: string | null
+          brief_description?: string | null
           challenge?: string | null
           created_at?: string
           excerpt?: string | null

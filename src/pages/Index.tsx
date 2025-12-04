@@ -36,6 +36,7 @@ const Index = () => {
               slug={project.slug}
               title={project.title}
               excerpt={project.excerpt}
+              briefDescription={project.brief_description}
               tags={project.tags}
               vimeoId={project.vimeo_id}
               isReversed={index % 2 !== 0}

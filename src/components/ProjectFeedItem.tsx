@@ -5,6 +5,7 @@ interface ProjectFeedItemProps {
   slug: string;
   title: string;
   excerpt?: string;
+  briefDescription?: string;
   tags?: string[];
   vimeoId?: string;
   image?: string;
@@ -15,6 +16,7 @@ const ProjectFeedItem: React.FC<ProjectFeedItemProps> = ({
   slug,
   title,
   excerpt,
+  briefDescription,
   tags,
   vimeoId,
   image,
@@ -64,27 +66,29 @@ const ProjectFeedItem: React.FC<ProjectFeedItemProps> = ({
   );
 
   const TextContent = () => (
-    <div className="w-full lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
+    <div className={`w-full lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center ${isReversed ? 'text-right' : 'text-left'}`}>
       {/* Tags */}
       {tags && tags.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-4">
-          {tags.map((tag, index) => (
-            <span 
-              key={index}
-              className="text-xs px-3 py-1 border border-border rounded-none bg-background"
-            >
-              {tag}
-            </span>
-          ))}
+        <div className={`flex flex-wrap gap-2 mb-4 ${isReversed ? 'justify-end' : 'justify-start'}`}>
+          <span className="text-xs text-muted-foreground">
+            {tags.slice(0, 3).join(' / ')}
+          </span>
         </div>
       )}
       
       {/* Title */}
       <h3 className="text-sm text-muted-foreground mb-3">{title}</h3>
       
+      {/* Brief Description */}
+      {briefDescription && (
+        <p className="text-lg lg:text-xl font-light leading-relaxed mb-4">
+          {briefDescription}
+        </p>
+      )}
+      
       {/* Excerpt */}
       {excerpt && (
-        <p className="text-base lg:text-lg leading-relaxed mb-6">
+        <p className="text-sm text-muted-foreground leading-relaxed mb-6">
           {excerpt}
         </p>
       )}
@@ -92,7 +96,7 @@ const ProjectFeedItem: React.FC<ProjectFeedItemProps> = ({
       {/* CTA Button */}
       <Link 
         to={`/project/${slug}`}
-        className="inline-flex items-center gap-2 text-sm font-medium border border-foreground px-4 py-2 hover:bg-foreground hover:text-background transition-colors w-fit"
+        className={`inline-flex items-center gap-2 text-sm font-medium border border-foreground px-4 py-2 hover:bg-foreground hover:text-background transition-colors w-fit ${isReversed ? 'ml-auto' : ''}`}
       >
         Ver más →
       </Link>

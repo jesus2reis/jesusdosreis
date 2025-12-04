@@ -38,25 +38,34 @@ const SplitLayout: React.FC<SplitLayoutProps> = ({ children }) => {
         {/* Sidebar Content */}
         <div className="flex-1 p-8 overflow-y-auto">
           {/* Logo/Name */}
-          <div className="mb-6">
+          <div className="pb-6">
             <Link to="/" className="block">
               <h1 className="text-3xl font-light tracking-tight">JESÚS(2)REIS</h1>
             </Link>
           </div>
 
+          {/* Divider */}
+          <div className="border-t border-border mb-6"></div>
+
           {/* Role */}
-          <div className="mb-8">
+          <div className="mb-6">
             <p className="text-sm text-muted-foreground">
               Director Creativo & Brand Designer
             </p>
           </div>
 
+          {/* Divider */}
+          <div className="border-t border-border mb-6"></div>
+
           {/* Tagline */}
-          <div className="mb-10">
+          <div className="py-6">
             <p className="text-2xl font-light leading-tight">
               Démosle a tu negocio la marca que se merece.
             </p>
           </div>
+
+          {/* Divider */}
+          <div className="border-t border-border mb-8"></div>
 
           {/* Availability Indicator */}
           <div className="mb-8 flex items-center gap-2">
