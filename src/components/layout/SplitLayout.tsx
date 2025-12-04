@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Mail, Linkedin } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
-import { useAboutContent } from '@/hooks/useAboutContent';
 
 interface SplitLayoutProps {
   children: React.ReactNode;
@@ -13,7 +12,6 @@ const SplitLayout: React.FC<SplitLayoutProps> = ({ children }) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
-  const { data: aboutContent } = useAboutContent();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -37,39 +35,49 @@ const SplitLayout: React.FC<SplitLayoutProps> = ({ children }) => {
     <div className="min-h-screen flex">
       {/* Fixed Left Sidebar - Hidden on mobile */}
       <aside className="hidden lg:flex lg:w-80 xl:w-96 h-screen sticky top-0 flex-col border-r border-border bg-sidebar">
-        {/* Sidebar Header */}
-        <div className="p-6 border-b border-border">
-          <Link to="/" className="block">
-            <span className="text-sm font-medium tracking-wide uppercase">Portfolio</span>
-          </Link>
-        </div>
-
         {/* Sidebar Content */}
-        <div className="flex-1 p-6 overflow-y-auto">
-          {/* Identity */}
-          <div className="mb-8">
+        <div className="flex-1 p-8 overflow-y-auto">
+          {/* Logo/Name */}
+          <div className="mb-6">
             <Link to="/" className="block">
-              <h1 className="text-lg font-semibold leading-tight mb-3">Jesús dos Reis</h1>
+              <h1 className="text-3xl font-light tracking-tight">JESÚS(2)REIS</h1>
             </Link>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {aboutContent?.about_short || 
-                "Diseñador de marca con sede en Madrid, transformando startups en marcas reconocibles a través de diseño de identidad."
-              }
+          </div>
+
+          {/* Role */}
+          <div className="mb-8">
+            <p className="text-sm text-muted-foreground">
+              Director Creativo & Brand Designer
             </p>
           </div>
 
+          {/* Tagline */}
+          <div className="mb-10">
+            <p className="text-2xl font-light leading-tight">
+              Démosle a tu negocio la marca que se merece.
+            </p>
+          </div>
+
+          {/* Availability Indicator */}
+          <div className="mb-8 flex items-center gap-2">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse-slow"></span>
+            <span className="text-sm text-green-600">
+              Abierto para trabajar nuevos proyectos
+            </span>
+          </div>
+
           {/* CTA Button */}
-          <div className="mb-8">
+          <div className="mb-10">
             <Link 
               to="/contact"
-              className="block w-full py-3 px-4 bg-foreground text-background text-center text-sm font-medium uppercase tracking-wide hover:bg-foreground/90 transition-colors"
+              className="block w-full py-4 px-6 bg-foreground text-background text-center text-sm font-medium tracking-wide hover:bg-foreground/90 transition-colors"
             >
               Contacto
             </Link>
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center gap-6 mb-8 text-muted-foreground">
+          <div className="flex items-center gap-6 mb-10 text-muted-foreground">
             <a 
               href="https://www.linkedin.com/in/jesusdosreis/" 
               target="_blank" 
@@ -118,7 +126,7 @@ const SplitLayout: React.FC<SplitLayoutProps> = ({ children }) => {
         </div>
 
         {/* Sidebar Footer */}
-        <div className="p-6 border-t border-border">
+        <div className="p-8 border-t border-border">
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Jesús dos Reis
           </p>
@@ -128,7 +136,7 @@ const SplitLayout: React.FC<SplitLayoutProps> = ({ children }) => {
       {/* Mobile Header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-40 bg-background border-b border-border">
         <div className="flex items-center justify-between p-4">
-          <Link to="/" className="text-lg font-semibold">Jesús dos Reis</Link>
+          <Link to="/" className="text-xl font-light tracking-tight">JESÚS(2)REIS</Link>
           <button ref={buttonRef} onClick={toggleMenu} className="p-2">
             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -142,11 +150,27 @@ const SplitLayout: React.FC<SplitLayoutProps> = ({ children }) => {
           className="lg:hidden fixed inset-0 z-50 bg-background p-6 flex flex-col animate-fade-in"
         >
           <div className="flex justify-between items-center mb-8">
-            <span className="text-lg font-semibold">Jesús dos Reis</span>
+            <span className="text-xl font-light tracking-tight">JESÚS(2)REIS</span>
             <button onClick={toggleMenu}>
               <X size={20} />
             </button>
           </div>
+          
+          <p className="text-sm text-muted-foreground mb-4">
+            Director Creativo & Brand Designer
+          </p>
+          
+          <p className="text-xl font-light leading-tight mb-6">
+            Démosle a tu negocio la marca que se merece.
+          </p>
+          
+          <div className="flex items-center gap-2 mb-8">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse-slow"></span>
+            <span className="text-sm text-green-600">
+              Abierto para trabajar nuevos proyectos
+            </span>
+          </div>
+          
           <nav className="space-y-4 text-xl">
             <Link to="/" onClick={toggleMenu} className="block py-2">Proyectos</Link>
             <Link to="/about" onClick={toggleMenu} className="block py-2">Sobre mí</Link>
