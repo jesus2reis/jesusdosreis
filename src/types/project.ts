@@ -12,6 +12,7 @@ export interface Project {
   status?: string;
   featured?: boolean;
   excerpt?: string;
+  brief_description?: string;
   tags?: string[];
   type_of_work?: string;
   sort_order?: number;
