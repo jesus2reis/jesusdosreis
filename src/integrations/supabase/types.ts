@@ -181,6 +181,7 @@ export type Database = {
           excerpt: string | null
           featured: boolean | null
           id: string
+          show_case_study: boolean | null
           slug: string
           solution: string | null
           sort_order: number | null
@@ -200,6 +201,7 @@ export type Database = {
           excerpt?: string | null
           featured?: boolean | null
           id?: string
+          show_case_study?: boolean | null
           slug: string
           solution?: string | null
           sort_order?: number | null
@@ -219,6 +221,7 @@ export type Database = {
           excerpt?: string | null
           featured?: boolean | null
           id?: string
+          show_case_study?: boolean | null
           slug?: string
           solution?: string | null
           sort_order?: number | null

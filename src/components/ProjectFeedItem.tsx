@@ -10,6 +10,7 @@ interface ProjectFeedItemProps {
   vimeoId?: string;
   image?: string;
   isReversed?: boolean;
+  showCaseStudy?: boolean;
 }
 
 const ProjectFeedItem: React.FC<ProjectFeedItemProps> = ({
@@ -21,6 +22,7 @@ const ProjectFeedItem: React.FC<ProjectFeedItemProps> = ({
   vimeoId,
   image,
   isReversed = false,
+  showCaseStudy = true,
 }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
@@ -40,14 +42,17 @@ const ProjectFeedItem: React.FC<ProjectFeedItemProps> = ({
   }, []);
 
   const MediaContent = () => (
-    <div className="w-full lg:w-1/2 aspect-[4/3] bg-secondary relative overflow-hidden">
+    <Link 
+      to={`/project/${slug}`}
+      className="w-full lg:w-1/2 aspect-[4/3] bg-secondary relative overflow-hidden block"
+    >
       {vimeoId ? (
         <div className={`absolute inset-0 ${!isVideoLoaded ? 'animate-pulse bg-muted' : ''}`}>
           <iframe
             ref={iframeRef}
             src={`https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
             allow="autoplay; fullscreen; picture-in-picture"
-            className="w-[150%] h-[150%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover"
+            className="w-[150%] h-[150%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover pointer-events-none"
             title={title}
           />
         </div>
@@ -62,60 +67,79 @@ const ProjectFeedItem: React.FC<ProjectFeedItemProps> = ({
           <span className="text-muted-foreground">{title}</span>
         </div>
       )}
-    </div>
+    </Link>
   );
 
   const TextContent = () => (
-    <div className={`w-full lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center ${isReversed ? 'text-right' : 'text-left'}`}>
-      {/* Tags */}
+    <div className={`w-full lg:w-1/2 aspect-[4/3] p-6 lg:p-10 flex flex-col ${isReversed ? 'text-right items-end' : 'text-left items-start'}`}>
+      {/* Title at top */}
+      <h3 className="text-sm text-muted-foreground mb-3">{title}</h3>
+      
+      {/* Tags - Notion style chips */}
       {tags && tags.length > 0 && (
         <div className={`flex flex-wrap gap-2 mb-4 ${isReversed ? 'justify-end' : 'justify-start'}`}>
-          <span className="text-xs text-muted-foreground">
-            {tags.slice(0, 3).join(' / ')}
-          </span>
+          {tags.slice(0, 3).map((tag, index) => (
+            <span 
+              key={index}
+              className="text-xs px-3 py-1 bg-muted text-muted-foreground rounded-full"
+            >
+              {tag}
+            </span>
+          ))}
         </div>
       )}
       
-      {/* Title */}
-      <h3 className="text-sm text-muted-foreground mb-3">{title}</h3>
+      {/* Content grows to fill space */}
+      <div className="flex-1 flex flex-col justify-center">
+        {/* Brief Description */}
+        {briefDescription && (
+          <p className="text-lg lg:text-xl font-light leading-relaxed mb-4">
+            {briefDescription}
+          </p>
+        )}
+        
+        {/* Excerpt */}
+        {excerpt && (
+          <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+            {excerpt}
+          </p>
+        )}
+      </div>
       
-      {/* Brief Description */}
-      {briefDescription && (
-        <p className="text-lg lg:text-xl font-light leading-relaxed mb-4">
-          {briefDescription}
-        </p>
+      {/* CTA Button - only show if showCaseStudy is true */}
+      {showCaseStudy && (
+        <Link 
+          to={`/project/${slug}`}
+          className="inline-flex items-center gap-2 text-sm font-medium border border-foreground px-4 py-2 hover:bg-foreground hover:text-background transition-colors w-fit mt-auto"
+        >
+          Ver más →
+        </Link>
       )}
-      
-      {/* Excerpt */}
-      {excerpt && (
-        <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-          {excerpt}
-        </p>
-      )}
-      
-      {/* CTA Button */}
-      <Link 
-        to={`/project/${slug}`}
-        className={`inline-flex items-center gap-2 text-sm font-medium border border-foreground px-4 py-2 hover:bg-foreground hover:text-background transition-colors w-fit ${isReversed ? 'ml-auto' : ''}`}
-      >
-        Ver más →
-      </Link>
     </div>
   );
 
   return (
     <div className="flex flex-col lg:flex-row border-b border-border">
-      {isReversed ? (
-        <>
-          <TextContent />
-          <MediaContent />
-        </>
-      ) : (
-        <>
-          <MediaContent />
-          <TextContent />
-        </>
-      )}
+      {/* Mobile: always image first, then text */}
+      <div className="lg:hidden">
+        <MediaContent />
+        <TextContent />
+      </div>
+      
+      {/* Desktop: alternating layout */}
+      <div className="hidden lg:flex lg:flex-row w-full">
+        {isReversed ? (
+          <>
+            <TextContent />
+            <MediaContent />
+          </>
+        ) : (
+          <>
+            <MediaContent />
+            <TextContent />
+          </>
+        )}
+      </div>
     </div>
   );
 };

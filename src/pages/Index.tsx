@@ -40,6 +40,7 @@ const Index = () => {
               tags={project.tags}
               vimeoId={project.vimeo_id}
               isReversed={index % 2 !== 0}
+              showCaseStudy={project.show_case_study !== false}
             />
           ))}
         </div>
