@@ -16,6 +16,7 @@ export interface Project {
   tags?: string[];
   type_of_work?: string;
   sort_order?: number;
+  show_case_study?: boolean;
   created_at: string;
   updated_at: string;
 }
