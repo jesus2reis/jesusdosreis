@@ -56,6 +56,13 @@ const ProjectDetail = () => {
         </Link>
         <span className="text-sm font-medium uppercase tracking-wide">Proyecto</span>
       </header>
+
+      {/* Title Section - Always at top */}
+      <section className="border-b border-border">
+        <div className="p-8 lg:p-12">
+          <h1 className="text-3xl lg:text-4xl xl:text-5xl font-light leading-tight">{project.title}</h1>
+        </div>
+      </section>
       
       {/* Video Section */}
       {project.vimeo_id && (
@@ -74,8 +81,6 @@ const ProjectDetail = () => {
       {/* Project Content */}
       <section className="border-b border-border">
         <div className="p-8 lg:p-12">
-          <h1 className="text-3xl lg:text-4xl xl:text-5xl font-light mb-12 leading-tight">{project.title}</h1>
-          
           {/* Two Column Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
             {/* Left Column - Project Details */}
