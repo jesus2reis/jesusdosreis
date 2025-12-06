@@ -1,11 +1,10 @@
 import React from 'react';
-import SplitLayout from '../components/layout/SplitLayout';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
 const Contact = () => {
   return (
-    <SplitLayout>
+    <>
       {/* Page Header */}
       <header className="flex items-center gap-4 p-4 border-b border-border">
         <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
@@ -124,7 +123,7 @@ const Contact = () => {
           <p className="text-xl lg:text-2xl">Madrid, España</p>
         </div>
       </section>
-    </SplitLayout>
+    </>
   );
 };
 
