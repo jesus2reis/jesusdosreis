@@ -1,20 +1,15 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, ArrowLeft } from 'lucide-react';
-import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
 const NotFound = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col">
       <SEO 
         title="Página no encontrada - Error 404"
         description="La página que buscas no existe. Vuelve al inicio para explorar el portfolio de Jesús dos Reis."
       />
-      
-      <Navigation />
       
       <main className="flex-grow flex items-center justify-center px-6">
         <div className="max-w-md text-center space-y-8">
@@ -33,7 +28,7 @@ const NotFound = () => {
           <div className="space-y-4">
             <Link 
               to="/" 
-              className="inline-flex items-center gap-2 bg-foreground text-background px-6 py-3 rounded-lg hover:bg-foreground/90 transition-colors"
+              className="inline-flex items-center gap-2 bg-foreground text-background px-6 py-3 hover:bg-foreground/90 transition-colors"
             >
               <Home size={20} />
               Volver al inicio
@@ -51,8 +46,6 @@ const NotFound = () => {
           </div>
         </div>
       </main>
-      
-      <Footer />
     </div>
   );
 };

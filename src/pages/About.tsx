@@ -1,5 +1,4 @@
 import React from 'react';
-import SplitLayout from '../components/layout/SplitLayout';
 import ExperienceItem from '../components/ExperienceItem';
 import { useExperiences } from '@/hooks/useExperiences';
 import { useEducation } from '@/hooks/useEducation';
@@ -13,7 +12,7 @@ const About = () => {
   const { data: aboutContent, isLoading: aboutLoading } = useAboutContent();
 
   return (
-    <SplitLayout>
+    <>
       {/* Page Header */}
       <header className="flex items-center gap-4 p-4 border-b border-border">
         <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
@@ -126,7 +125,7 @@ const About = () => {
           Contacto
         </Link>
       </section>
-    </SplitLayout>
+    </>
   );
 };
 

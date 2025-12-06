@@ -1,6 +1,5 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import SplitLayout from '../components/layout/SplitLayout';
 import MediaGallery from '../components/MediaGallery';
 import SEO from '../components/SEO';
 import { useProject } from '@/hooks/useProject';
@@ -14,21 +13,17 @@ const ProjectDetail = () => {
 
   if (isLoading) {
     return (
-      <SplitLayout>
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="text-muted-foreground">Cargando...</div>
-        </div>
-      </SplitLayout>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-muted-foreground">Cargando...</div>
+      </div>
     );
   }
 
   if (!data?.project) {
     return (
-      <SplitLayout>
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="text-muted-foreground">Proyecto no encontrado</div>
-        </div>
-      </SplitLayout>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-muted-foreground">Proyecto no encontrado</div>
+      </div>
     );
   }
 
@@ -41,7 +36,7 @@ const ProjectDetail = () => {
     : allProjects?.[0];
 
   return (
-    <SplitLayout>
+    <>
       <SEO 
         title={project.title} 
         description={project.challenge || project.excerpt || `Proyecto ${project.title} - ${project.area || ''} ${project.year || ''}`} 
@@ -150,7 +145,7 @@ const ProjectDetail = () => {
           </Link>
         )}
       </section>
-    </SplitLayout>
+    </>
   );
 };
 

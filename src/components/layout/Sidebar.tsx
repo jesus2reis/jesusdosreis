@@ -3,17 +3,18 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Mail, Linkedin } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 
-interface SplitLayoutProps {
-  children: React.ReactNode;
-}
-
-const SplitLayout: React.FC<SplitLayoutProps> = ({ children }) => {
+const Sidebar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  // Close menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -32,9 +33,9 @@ const SplitLayout: React.FC<SplitLayoutProps> = ({ children }) => {
   }, [isMenuOpen]);
 
   return (
-    <div className="min-h-screen flex">
+    <>
       {/* Fixed Left Sidebar - Hidden on mobile */}
-      <aside className="hidden lg:flex lg:w-80 xl:w-96 h-screen sticky top-0 flex-col border-r border-border bg-sidebar">
+      <aside className="hidden lg:flex lg:w-80 xl:w-96 h-screen sticky top-0 flex-col border-r border-border bg-sidebar flex-shrink-0">
         {/* Sidebar Content */}
         <div className="flex-1 p-8 overflow-y-auto">
           {/* Logo/Name */}
@@ -195,13 +196,8 @@ const SplitLayout: React.FC<SplitLayoutProps> = ({ children }) => {
           </div>
         </div>
       )}
-
-      {/* Main Content Area - Scrollable */}
-      <main className="flex-1 lg:ml-0 pt-16 lg:pt-0">
-        {children}
-      </main>
-    </div>
+    </>
   );
 };
 
-export default SplitLayout;
+export default Sidebar;

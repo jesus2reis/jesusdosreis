@@ -1,5 +1,4 @@
 import React from 'react';
-import SplitLayout from '../components/layout/SplitLayout';
 import ProjectFeedItem from '../components/ProjectFeedItem';
 import SEO from '../components/SEO';
 import { useProjects } from '@/hooks/useProjects';
@@ -14,7 +13,7 @@ const Index = () => {
   };
 
   return (
-    <SplitLayout>
+    <>
       <SEO 
         title="Jesús dos Reis - Portfolio" 
         description="Portfolio de Jesús dos Reis, diseñador visual y desarrollador frontend especializado en experiencias digitales innovadoras." 
@@ -66,7 +65,7 @@ const Index = () => {
           Back to top
         </button>
       </section>
-    </SplitLayout>
+    </>
   );
 };
 
