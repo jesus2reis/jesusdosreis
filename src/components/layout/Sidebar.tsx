@@ -2,12 +2,20 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Mail, Linkedin } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
+import { useSidebarContent } from '@/hooks/useSidebarContent';
 
 const Sidebar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
+  const { data: sidebarContent } = useSidebarContent();
+
+  const title = sidebarContent?.title || 'Director Creativo & Brand Designer';
+  const slogan = sidebarContent?.slogan || 'Démosle a tu negocio la marca que se merece.';
+  const availableStatus = sidebarContent?.available_status || 'Abierto para trabajar nuevos proyectos';
+  const linkedIn = sidebarContent?.social_links?.linkedin || 'https://www.linkedin.com/in/jesusdosreis/';
+  const contactEmail = sidebarContent?.contact_email || 'hola@jesusdosreis.com';
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -51,7 +59,7 @@ const Sidebar: React.FC = () => {
           {/* Role */}
           <div className="mb-6">
             <p className="text-sm text-muted-foreground">
-              Director Creativo & Brand Designer
+              {title}
             </p>
           </div>
 
@@ -61,7 +69,7 @@ const Sidebar: React.FC = () => {
           {/* Tagline */}
           <div className="py-6">
             <p className="text-2xl font-light leading-tight">
-              Démosle a tu negocio la marca que se merece.
+              {slogan}
             </p>
           </div>
 
@@ -72,7 +80,7 @@ const Sidebar: React.FC = () => {
           <div className="mb-8 flex items-center gap-2">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse-slow"></span>
             <span className="text-sm text-green-600">
-              Abierto para trabajar nuevos proyectos
+              {availableStatus}
             </span>
           </div>
 
@@ -89,7 +97,7 @@ const Sidebar: React.FC = () => {
           {/* Social Links */}
           <div className="flex items-center gap-6 mb-10 text-muted-foreground">
             <a 
-              href="https://www.linkedin.com/in/jesusdosreis/" 
+              href={linkedIn}
               target="_blank" 
               rel="noopener noreferrer"
               className="hover:text-foreground transition-colors"
@@ -98,7 +106,7 @@ const Sidebar: React.FC = () => {
               <Linkedin size={18} />
             </a>
             <a 
-              href="mailto:hola@jesusdosreis.com"
+              href={`mailto:${contactEmail}`}
               className="hover:text-foreground transition-colors"
               aria-label="Email"
             >
@@ -167,17 +175,17 @@ const Sidebar: React.FC = () => {
           </div>
           
           <p className="text-sm text-muted-foreground mb-4">
-            Director Creativo & Brand Designer
+            {title}
           </p>
           
           <p className="text-xl font-light leading-tight mb-6">
-            Démosle a tu negocio la marca que se merece.
+            {slogan}
           </p>
           
           <div className="flex items-center gap-2 mb-8">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse-slow"></span>
             <span className="text-sm text-green-600">
-              Abierto para trabajar nuevos proyectos
+              {availableStatus}
             </span>
           </div>
           
@@ -187,10 +195,10 @@ const Sidebar: React.FC = () => {
             <Link to="/contact" onClick={toggleMenu} className="block py-2">Contacto</Link>
           </nav>
           <div className="mt-auto flex gap-6">
-            <a href="https://www.linkedin.com/in/jesusdosreis/" target="_blank" rel="noopener noreferrer">
+            <a href={linkedIn} target="_blank" rel="noopener noreferrer">
               <Linkedin size={20} />
             </a>
-            <a href="mailto:hola@jesusdosreis.com">
+            <a href={`mailto:${contactEmail}`}>
               <Mail size={20} />
             </a>
           </div>

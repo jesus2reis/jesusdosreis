@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom';
 interface ProjectFeedItemProps {
   slug: string;
   title: string;
+  client?: string;
   excerpt?: string;
   briefDescription?: string;
   tags?: string[];
   vimeoId?: string;
   image?: string;
+  gridThumbnail?: string;
+  gridThumbnailType?: string;
   isReversed?: boolean;
   showCaseStudy?: boolean;
 }
@@ -16,16 +19,24 @@ interface ProjectFeedItemProps {
 const ProjectFeedItem: React.FC<ProjectFeedItemProps> = ({
   slug,
   title,
+  client,
   excerpt,
   briefDescription,
   tags,
   vimeoId,
   image,
+  gridThumbnail,
+  gridThumbnailType,
   isReversed = false,
   showCaseStudy = true,
 }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+  // Determine which media to show: grid_thumbnail takes priority
+  const displayVimeoId = gridThumbnail && gridThumbnailType === 'video' ? gridThumbnail : vimeoId;
+  const displayImage = gridThumbnail && gridThumbnailType === 'image' ? gridThumbnail : image;
+  const useVideo = gridThumbnail ? gridThumbnailType === 'video' : !!vimeoId;
 
   useEffect(() => {
     const handleVideoLoaded = () => {
@@ -46,19 +57,19 @@ const ProjectFeedItem: React.FC<ProjectFeedItemProps> = ({
       to={`/project/${slug}`}
       className="w-full lg:w-1/2 aspect-[4/3] bg-secondary relative overflow-hidden block"
     >
-      {vimeoId ? (
+      {useVideo && displayVimeoId ? (
         <div className={`absolute inset-0 ${!isVideoLoaded ? 'animate-pulse bg-muted' : ''}`}>
           <iframe
             ref={iframeRef}
-            src={`https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+            src={`https://player.vimeo.com/video/${displayVimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
             allow="autoplay; fullscreen; picture-in-picture"
             className="w-[150%] h-[150%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover pointer-events-none"
             title={title}
           />
         </div>
-      ) : image ? (
+      ) : displayImage ? (
         <img 
-          src={image} 
+          src={displayImage} 
           alt={title} 
           className="w-full h-full object-cover"
         />
@@ -72,8 +83,8 @@ const ProjectFeedItem: React.FC<ProjectFeedItemProps> = ({
 
   const TextContent = () => (
     <div className={`w-full lg:w-1/2 aspect-[4/3] p-6 lg:p-10 flex flex-col ${isReversed ? 'text-right items-end' : 'text-left items-start'}`}>
-      {/* Title at top */}
-      <h3 className="text-sm text-muted-foreground mb-3">{title}</h3>
+      {/* Client name at top */}
+      <h3 className="text-sm text-muted-foreground mb-3">{client || title}</h3>
       
       {/* Tags - Notion style chips */}
       {tags && tags.length > 0 && (

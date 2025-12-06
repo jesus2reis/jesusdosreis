@@ -34,10 +34,13 @@ const Index = () => {
               key={project.id}
               slug={project.slug}
               title={project.title}
+              client={project.client}
               excerpt={project.excerpt}
               briefDescription={project.brief_description}
               tags={project.tags}
               vimeoId={project.vimeo_id}
+              gridThumbnail={project.grid_thumbnail}
+              gridThumbnailType={project.grid_thumbnail_type}
               isReversed={index % 2 !== 0}
               showCaseStudy={project.show_case_study !== false}
             />
