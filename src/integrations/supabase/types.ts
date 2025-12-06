@@ -114,7 +114,7 @@ export type Database = {
           id: string
           image_type: string | null
           max_height: string | null
-          media_type: Database["public"]["Enums"]["media_type"] | null
+          media_type: string | null
           position: number
           project_id: string
           updated_at: string
@@ -133,7 +133,7 @@ export type Database = {
           id?: string
           image_type?: string | null
           max_height?: string | null
-          media_type?: Database["public"]["Enums"]["media_type"] | null
+          media_type?: string | null
           position?: number
           project_id: string
           updated_at?: string
@@ -152,7 +152,7 @@ export type Database = {
           id?: string
           image_type?: string | null
           max_height?: string | null
-          media_type?: Database["public"]["Enums"]["media_type"] | null
+          media_type?: string | null
           position?: number
           project_id?: string
           updated_at?: string
@@ -177,9 +177,12 @@ export type Database = {
           area: string | null
           brief_description: string | null
           challenge: string | null
+          client: string | null
           created_at: string
           excerpt: string | null
           featured: boolean | null
+          grid_thumbnail: string | null
+          grid_thumbnail_type: string | null
           id: string
           show_case_study: boolean | null
           slug: string
@@ -197,9 +200,12 @@ export type Database = {
           area?: string | null
           brief_description?: string | null
           challenge?: string | null
+          client?: string | null
           created_at?: string
           excerpt?: string | null
           featured?: boolean | null
+          grid_thumbnail?: string | null
+          grid_thumbnail_type?: string | null
           id?: string
           show_case_study?: boolean | null
           slug: string
@@ -217,9 +223,12 @@ export type Database = {
           area?: string | null
           brief_description?: string | null
           challenge?: string | null
+          client?: string | null
           created_at?: string
           excerpt?: string | null
           featured?: boolean | null
+          grid_thumbnail?: string | null
+          grid_thumbnail_type?: string | null
           id?: string
           show_case_study?: boolean | null
           slug?: string
@@ -232,6 +241,39 @@ export type Database = {
           updated_at?: string
           vimeo_id?: string | null
           year?: string | null
+        }
+        Relationships: []
+      }
+      sidebar_content: {
+        Row: {
+          available_status: string
+          contact_email: string | null
+          created_at: string
+          id: string
+          slogan: string
+          social_links: Json | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          available_status?: string
+          contact_email?: string | null
+          created_at?: string
+          id?: string
+          slogan?: string
+          social_links?: Json | null
+          title?: string
+          updated_at?: string
+        }
+        Update: {
+          available_status?: string
+          contact_email?: string | null
+          created_at?: string
+          id?: string
+          slogan?: string
+          social_links?: Json | null
+          title?: string
+          updated_at?: string
         }
         Relationships: []
       }
