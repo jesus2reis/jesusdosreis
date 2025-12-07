@@ -38,42 +38,6 @@ export type Database = {
         }
         Relationships: []
       }
-      contact_content: {
-        Row: {
-          claim: string
-          created_at: string
-          email: string | null
-          id: string
-          linkedin_label: string | null
-          linkedin_url: string | null
-          location: string | null
-          process: Json
-          updated_at: string
-        }
-        Insert: {
-          claim?: string
-          created_at?: string
-          email?: string | null
-          id?: string
-          linkedin_label?: string | null
-          linkedin_url?: string | null
-          location?: string | null
-          process?: Json
-          updated_at?: string
-        }
-        Update: {
-          claim?: string
-          created_at?: string
-          email?: string | null
-          id?: string
-          linkedin_label?: string | null
-          linkedin_url?: string | null
-          location?: string | null
-          process?: Json
-          updated_at?: string
-        }
-        Relationships: []
-      }
       content_blocks: {
         Row: {
           alt_text: string | null
