@@ -58,12 +58,13 @@ const ProjectFeedItem: React.FC<ProjectFeedItemProps> = ({
       className="w-full lg:w-1/2 aspect-[4/3] bg-secondary relative overflow-hidden block"
     >
       {useVideo && displayVimeoId ? (
-        <div className={`absolute inset-0 ${!isVideoLoaded ? 'animate-pulse bg-muted' : ''}`}>
+        <div className={`absolute inset-0 overflow-hidden ${!isVideoLoaded ? 'animate-pulse bg-muted' : ''}`}>
           <iframe
             ref={iframeRef}
             src={`https://player.vimeo.com/video/${displayVimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
             allow="autoplay; fullscreen; picture-in-picture"
-            className="w-[150%] h-[150%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover pointer-events-none"
+            className="absolute inset-0 w-full h-full scale-150 pointer-events-none"
+            style={{ objectFit: 'cover' }}
             title={title}
           />
         </div>
@@ -82,13 +83,13 @@ const ProjectFeedItem: React.FC<ProjectFeedItemProps> = ({
   );
 
   const TextContent = () => (
-    <div className={`w-full lg:w-1/2 aspect-[4/3] p-6 lg:p-10 flex flex-col ${isReversed ? 'text-right items-end' : 'text-left items-start'}`}>
+    <div className={`w-full lg:w-1/2 aspect-[4/3] p-6 lg:p-10 flex flex-col text-left items-start ${isReversed ? 'lg:text-right lg:items-end' : ''}`}>
       {/* Client name at top */}
       <h3 className="text-sm text-muted-foreground mb-3">{client || title}</h3>
       
       {/* Tags - Notion style chips */}
       {tags && tags.length > 0 && (
-        <div className={`flex flex-wrap gap-2 mb-4 ${isReversed ? 'justify-end' : 'justify-start'}`}>
+        <div className={`flex flex-wrap gap-2 mb-4 justify-start ${isReversed ? 'lg:justify-end' : ''}`}>
           {tags.slice(0, 3).map((tag, index) => (
             <span 
               key={index}
