@@ -27,7 +27,7 @@ const ProjectDetail = () => {
     );
   }
 
-  const { project, images } = data;
+  const { project, contentBlocks } = data;
 
   // Find current project index and calculate navigation
   const currentIndex = allProjects?.findIndex(p => p.slug === slug) || 0;
@@ -124,7 +124,7 @@ const ProjectDetail = () => {
 
       {/* Project Media Gallery */}
       <section>
-        <MediaGallery items={images || []} />
+        <MediaGallery items={contentBlocks || []} />
       </section>
 
       {/* Navigation */}

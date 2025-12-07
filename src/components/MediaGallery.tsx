@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ProjectImage } from '@/types/project';
+import { ContentBlock } from '@/types/project';
 import { Play } from 'lucide-react';
+
 interface MediaGalleryProps {
-  items: ProjectImage[];
+  items: ContentBlock[];
 }
+
 interface MediaItemProps {
-  item: ProjectImage;
+  item: ContentBlock;
   className?: string;
 }
 const MediaItem: React.FC<MediaItemProps> = ({
@@ -48,39 +50,78 @@ const MediaItem: React.FC<MediaItemProps> = ({
     }
     return {};
   };
-  if (item.media_type === 'video' && item.vimeo_id) {
-    return <div className={`w-full ${className}`}>
-        <div className="aspect-video relative overflow-hidden bg-muted" style={getContainerStyles()}>
-          {!isVideoLoaded && <div className="absolute inset-0 flex items-center justify-center bg-muted animate-pulse">
-              <Play size={48} className="text-muted-foreground" />
-            </div>}
-          <iframe ref={iframeRef} src={`https://player.vimeo.com/video/${item.vimeo_id}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&quality=1080p&preload=auto`} allow="autoplay; fullscreen; picture-in-picture" className="w-full h-full absolute inset-0" title={item.alt_text || 'Video del proyecto'} />
+  // Text content type
+  if (item.media_type === 'text' && item.text_content) {
+    return (
+      <div className={`w-full ${className}`}>
+        <div className="p-8 bg-muted/30 rounded-lg" style={getContainerStyles()}>
+          <p className="text-lg lg:text-xl font-light leading-relaxed text-foreground">
+            {item.text_content}
+          </p>
         </div>
-        {item.caption && <p className="mt-4 text-sm text-muted-foreground text-center">
+        {item.caption && (
+          <p className="mt-4 text-sm text-muted-foreground text-center">
             {item.caption}
-          </p>}
-      </div>;
-  }
-  return <div className={`w-full ${className}`}>
-      <div className="overflow-hidden" style={getContainerStyles()}>
-        <img src={item.url} alt={item.alt_text || 'Imagen del proyecto'} className={`w-full h-full object-cover ${getObjectPosition(item.vertical_alignment)}`} loading="lazy" />
+          </p>
+        )}
       </div>
-      {item.caption && <p className="mt-4 text-sm text-muted-foreground text-center">
+    );
+  }
+
+  if (item.media_type === 'video' && item.vimeo_id) {
+    return (
+      <div className={`w-full ${className}`}>
+        <div className="aspect-video relative overflow-hidden bg-muted" style={getContainerStyles()}>
+          {!isVideoLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center bg-muted animate-pulse">
+              <Play size={48} className="text-muted-foreground" />
+            </div>
+          )}
+          <iframe 
+            ref={iframeRef} 
+            src={`https://player.vimeo.com/video/${item.vimeo_id}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&quality=1080p&preload=auto`} 
+            allow="autoplay; fullscreen; picture-in-picture" 
+            className="w-full h-full absolute inset-0" 
+            title={item.alt_text || 'Video del proyecto'} 
+          />
+        </div>
+        {item.caption && (
+          <p className="mt-4 text-sm text-muted-foreground text-center">
+            {item.caption}
+          </p>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className={`w-full ${className}`}>
+      <div className="overflow-hidden" style={getContainerStyles()}>
+        <img 
+          src={item.url} 
+          alt={item.alt_text || 'Imagen del proyecto'} 
+          className={`w-full h-full object-cover ${getObjectPosition(item.vertical_alignment)}`} 
+          loading="lazy" 
+        />
+      </div>
+      {item.caption && (
+        <p className="mt-4 text-sm text-muted-foreground text-center">
           {item.caption}
-        </p>}
-    </div>;
+        </p>
+      )}
+    </div>
+  );
 };
-const MediaGallery: React.FC<MediaGalleryProps> = ({
-  items
-}) => {
+const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
   if (!items || items.length === 0) {
     return null;
   }
 
   // Agrupar elementos para crear filas dinámicas
   const createRows = () => {
-    const rows: ProjectImage[][] = [];
-    let currentRow: ProjectImage[] = [];
+    const rows: ContentBlock[][] = [];
+    let currentRow: ContentBlock[] = [];
+    
     items.forEach(item => {
       const widthType = item.width_type || 'full';
       if (widthType === 'full') {

@@ -24,9 +24,9 @@ export interface Project {
   updated_at: string;
 }
 
-export interface ProjectImage {
+export interface ContentBlock {
   id: string;
-  project_id: string;
+  project_slug: string;
   url: string;
   position: number;
   alt_text?: string;
@@ -35,7 +35,7 @@ export interface ProjectImage {
   height?: number;
   file_size?: number;
   image_type?: string;
-  media_type?: 'image' | 'video' | 'text';
+  media_type: 'image' | 'video' | 'text';
   vimeo_id?: string;
   text_content?: string;
   width_type?: 'full' | 'half';
@@ -44,3 +44,6 @@ export interface ProjectImage {
   created_at: string;
   updated_at: string;
 }
+
+// Alias for backward compatibility
+export type ProjectImage = ContentBlock;

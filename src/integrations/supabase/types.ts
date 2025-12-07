@@ -38,6 +38,77 @@ export type Database = {
         }
         Relationships: []
       }
+      content_blocks: {
+        Row: {
+          alt_text: string | null
+          caption: string | null
+          created_at: string
+          file_size: number | null
+          height: number | null
+          id: string
+          image_type: string | null
+          max_height: string | null
+          media_type: string
+          position: number
+          project_slug: string
+          text_content: string | null
+          updated_at: string
+          url: string
+          vertical_alignment: string | null
+          vimeo_id: string | null
+          width: number | null
+          width_type: string | null
+        }
+        Insert: {
+          alt_text?: string | null
+          caption?: string | null
+          created_at?: string
+          file_size?: number | null
+          height?: number | null
+          id?: string
+          image_type?: string | null
+          max_height?: string | null
+          media_type?: string
+          position?: number
+          project_slug: string
+          text_content?: string | null
+          updated_at?: string
+          url?: string
+          vertical_alignment?: string | null
+          vimeo_id?: string | null
+          width?: number | null
+          width_type?: string | null
+        }
+        Update: {
+          alt_text?: string | null
+          caption?: string | null
+          created_at?: string
+          file_size?: number | null
+          height?: number | null
+          id?: string
+          image_type?: string | null
+          max_height?: string | null
+          media_type?: string
+          position?: number
+          project_slug?: string
+          text_content?: string | null
+          updated_at?: string
+          url?: string
+          vertical_alignment?: string | null
+          vimeo_id?: string | null
+          width?: number | null
+          width_type?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "content_blocks_project_slug_fkey"
+            columns: ["project_slug"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["slug"]
+          },
+        ]
+      }
       education: {
         Row: {
           course: string
@@ -103,74 +174,6 @@ export type Database = {
           years?: string
         }
         Relationships: []
-      }
-      project_images: {
-        Row: {
-          alt_text: string | null
-          caption: string | null
-          created_at: string
-          file_size: number | null
-          height: number | null
-          id: string
-          image_type: string | null
-          max_height: string | null
-          media_type: string | null
-          position: number
-          project_id: string
-          updated_at: string
-          url: string
-          vertical_alignment: string | null
-          vimeo_id: string | null
-          width: number | null
-          width_type: Database["public"]["Enums"]["width_type"] | null
-        }
-        Insert: {
-          alt_text?: string | null
-          caption?: string | null
-          created_at?: string
-          file_size?: number | null
-          height?: number | null
-          id?: string
-          image_type?: string | null
-          max_height?: string | null
-          media_type?: string | null
-          position?: number
-          project_id: string
-          updated_at?: string
-          url: string
-          vertical_alignment?: string | null
-          vimeo_id?: string | null
-          width?: number | null
-          width_type?: Database["public"]["Enums"]["width_type"] | null
-        }
-        Update: {
-          alt_text?: string | null
-          caption?: string | null
-          created_at?: string
-          file_size?: number | null
-          height?: number | null
-          id?: string
-          image_type?: string | null
-          max_height?: string | null
-          media_type?: string | null
-          position?: number
-          project_id?: string
-          updated_at?: string
-          url?: string
-          vertical_alignment?: string | null
-          vimeo_id?: string | null
-          width?: number | null
-          width_type?: Database["public"]["Enums"]["width_type"] | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "project_images_project_id_fkey"
-            columns: ["project_id"]
-            isOneToOne: false
-            referencedRelation: "projects"
-            referencedColumns: ["id"]
-          },
-        ]
       }
       projects: {
         Row: {
